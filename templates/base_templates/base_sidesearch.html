@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head_block %}
+    {% endblock %}
+
+    <link href="{% static 'css/datepicker/bootstrap.min.css' %}" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <link href="{% static 'css/datepicker/jquery.Bootstrap-PersianDateTimePicker.css' %}"  rel="stylesheet" />
+    <script src="{% static 'js/datepicker/jquery-2.1.4.js' %}" ></script>
+    <script src="{% static 'js/datepicker/bootstrap.js' %}" ></script>
+    <link type="text/css" href="{% static 'css/datepicker/persian-datepicker.css' %}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lalezar&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Markazi+Text&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Harmattan&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <link rel="shortcut icon" type="image/png" href="http://varzesh-kon.ir.com/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="/media/logos/favicon.png"/>
+
+   <!--Let browser know website is optimized for mobile-->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  </head>
+
+    <body class="grey darken-3" style="direction:rtl;" >
+
+<div style="z-index: 10" class="navbar-fixed" style="direction:ltr;">
+
+
+      <nav style="min-height: 63px; height:63px;" class="white" >
+
+        <div class="nav">
+          <ul class="right" style="direction:ltr;">
+          <a  href="#" data-target="nav1" class="sidenav-trigger"><i  class="gold-text material-icons"><font color="#d4af37">menu</font></i></a>
+          </ul>
+          <ul style="margin-left:35px;" class="left hide-on-med-and-down">
+
+            {% if user.is_authenticated %}
+            {% if user.is_sportclub %}
+            <li><a href="{% url 'logout' %}"><div class="fLalezar gold-text" >خروج</div></a></li>
+            <li><a href="{% url 'company:contactus'%}" class=" tooltipped" data-position="bottom" data-tooltip="ارتباط با ما"><i style="color:#d4af37;" class=" material-icons">phone</i></a></li>
+            <li><a href="{% url 'sportclub:profile' slug=user.slug %}" class=" tooltipped" data-position="bottom" data-tooltip="پروفایل ‍‍"><i style="color:#d4af37;" class="material-icons">account_circle</i></a></li>
+
+            {% if user.sportclubs.salons.count > 1 or user.sportclubs.salons.count == 0 %}
+            <li><a href="{% url 'sportclub:workspace' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="مدیریت سالن ها"><i style="color:#d4af37;" class=" material-icons">account_balance</i></a></li>
+            {% else %}
+            <li><a href="{% url 'sportclub:workspace' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="مدیریت سالن ها"><i style="color:#d4af37;" class=" material-icons">account_balance</i></a></li>
+            <li><a href="{% url 'session:workspace' pk=user.sportclubs.salons.get.pk %}" class="tooltipped" data-position="bottom" data-tooltip="مدیریت سانس ها"><i style="color:#d4af37;" class=" material-icons">event_note</i></a></li>
+            {% endif %}
+
+
+
+            {% endif %}
+            {% if user.is_commonuser %}
+            <li><a href="{% url 'logout' %}"><div class="fLalezar gold-text" >خروج</div></a></li>
+            <li><a href="{% url 'company:contactus' %}" class=" tooltipped" data-position="bottom" data-tooltip="ارتباط با ما"><i style="color:#d4af37;" class=" material-icons">phone</i></a></li>
+            <li><a href="{% url 'commonuser:dashboard' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="سانس های شما"><i style="color:#d4af37;" class="material-icons">event</i></a></li>
+            <li><a href="{% url 'commonuser:profile' slug=user.slug %}" class=" tooltipped" data-position="bottom" data-tooltip="پروفایل ‍‍"><i style="color:#d4af37;" class="material-icons">account_circle</i></a></li>
+
+
+            {% endif %}
+            {% if user.is_superuser %}
+            <li><a href="{% url 'logout' %}"><div class="fLalezar gold-text" >خروج</div></a></li>
+            <li><a href="{% url 'accounts:profile' slug=user.slug %}" class=" tooltipped" data-position="bottom" data-tooltip="پروفایل ‍‍"><i style="color:#d4af37;" class="material-icons">account_circle</i></a></li>
+            <li><a href="{% url 'accounts:workspace' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="میز کار"><i style="color:#d4af37;" class=" material-icons">event_note</i></a></li>
+
+
+
+
+            {% endif %}
+            {% if user.is_masteruser %}
+            <li><a href="{% url 'logout' %}"><div class="fLalezar gold-text" >خروج</div></a></li>
+            <li><a href="{% url 'masteruser:profile' slug=user.slug %}" class=" tooltipped" data-position="bottom" data-tooltip="پروفایل ‍‍"><i style="color:#d4af37;" class="material-icons">account_circle</i></a></li>
+            <li><a href="{% url 'masteruser:workspace' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="میز کار"><i style="color:#d4af37;" class=" material-icons">event_note</i></a></li>
+
+            {% endif %}
+            {% else %}
+            <li><a ><a href="{% url 'company:contactus' %}" class="tooltipped" data-position="bottom" data-tooltip="ارتباط با ما"><i style="color:#d4af37;" class=" material-icons">phone</i></a></li>
+            <li><a href="{% url 'commonuser:signup' %}"><div class="fLalezar gold-text">عضویت</div></a></li>
+            <li><a href="{% url 'accounts:login' %}"><div class="fLalezar gold-text">ورود</div></a></li>
+            {% endif %}
+            <li><a class="dropdown-trigger gold-text fLalezar" href="#!" data-target="dropdown1"><div class="gold-text"><i class="material-icons right gold-text">arrow_drop_down</i>میانبر</div></a></li>
+          </ul>
+          <ul class="left">
+            <a href="{% url 'index' %}"  ><img style="height: 100%" class="brand-logo center" src="/media/logos/white_logo.png" ></a>
+          </ul>
+          {% if not filter_off %}
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons gold-text">search</i></a>
+          {% endif %}
+
+        </div>
+      </nav>
+</div>
+<!-- in the end this part must be copy pasted from above-->
+
+
+      {% block body_block %}
+      {% endblock %}
+      <ul class="sidenav grey darken-4" id="mobile-demo">
+        {% if user.is_authenticated %}
+        {% if user.is_sportclub %}
+        {% if user.sportclubs.salons.count > 1 or user.sportclubs.salons.count == 0 %}
+        <li><a href="{% url 'sportclub:workspace' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="مدیریت سالن ها"><i style="color:#d4af37;" class=" material-icons">account_balance</i></a></li>
+        {% else %}
+        <li><a href="{% url 'session:workspace' pk=user.sportclubs.salons.get.pk %}" class="tooltipped" data-position="bottom" data-tooltip="مدیریت سانس ها"><i style="color:#d4af37;" class=" material-icons">event_note</i></a></li>
+        <li><a href="{% url 'sportclub:workspace' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="مدیریت سالن ها"><i style="color:#d4af37;" class=" material-icons">account_balance</i></a></li>
+        {% endif %}
+
+        <li><a href="{% url 'sportclub:profile' slug=user.slug %}" class=" tooltipped" data-position="bottom" data-tooltip="پروفایل ‍‍"><i style="color:#d4af37;" class="material-icons">account_circle</i></a></li>
+        <li><a href="{% url 'company:contactus' %}" class=" tooltipped" data-position="bottom" data-tooltip="ارتباط با ما"><i style="color:#d4af37;" class=" material-icons">phone</i></a></li>
+        <li><a href="{% url 'logout' %}"><div class="fLalezar gold-text" >خروج</div></a></li>
+        {% endif %}
+        {% if user.is_commonuser %}
+        <li><a href="{% url 'commonuser:dashboard' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="سانس های شما"><i style="color:#d4af37;" class="material-icons">event</i></a></li>
+        <li><a href="{% url 'commonuser:profile' slug=user.slug %}" class=" tooltipped" data-position="bottom" data-tooltip="پروفایل ‍‍"><i style="color:#d4af37;" class="material-icons">account_circle</i></a></li>
+        <li><a href="{% url 'company:contactus' %}" class=" tooltipped" data-position="bottom" data-tooltip="ارتباط با ما"><i style="color:#d4af37;" class=" material-icons">phone</i></a></li>
+        <li><a href="{% url 'logout' %}"><div class="fLalezar gold-text" >خروج</div></a></li>
+        {% endif %}
+        {% if user.is_superuser %}
+        <li><a href="{% url 'accounts:workspace' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="میز کار"><i style="color:#d4af37;" class=" material-icons">event_note</i></a></li>
+        <li><a href="{% url 'accounts:profile' slug=user.slug %}" class=" tooltipped" data-position="bottom" data-tooltip="پروفایل ‍‍"><i style="color:#d4af37;" class="material-icons">account_circle</i></a></li>
+        <li><a href="{% url 'logout' %}"><div class="fLalezar gold-text" >خروج</div></a></li>
+        {% endif %}
+        {% if user.is_masteruser %}
+        <li><a href="{% url 'masteruser:workspace' slug=user.slug %}" class="tooltipped" data-position="bottom" data-tooltip="میز کار"><i style="color:#d4af37;" class=" material-icons">event_note</i></a></li>
+        <li><a href="{% url 'masteruser:profile' slug=user.slug %}" class=" tooltipped" data-position="bottom" data-tooltip="پروفایل ‍‍"><i style="color:#d4af37;" class="material-icons">account_circle</i></a></li>
+        <li><a href="{% url 'logout' %}"><div class="fLalezar gold-text" >خروج</div></a></li>
+        {% endif %}
+        {% else %}
+        <li><a href="{% url 'accounts:login' %}"><div class="fLalezar gold-text">ورود</div></a></li>
+        <li><a href="{% url 'commonuser:signup' %}"><div class="fLalezar gold-text">عضویت</div></a></li>
+        <li><a><a href="{% url 'company:contactus' %}" class="tooltipped" data-position="bottom" data-tooltip="ارتباط با ما"><i style="color:#d4af37;" class=" material-icons">phone</i></a></li>
+        {% endif %}
+      </ul>
+
+<!--Footer-->
+
+
+<!--NavOptions-->
+<ul class="sidenav white" id="nav1" style="direction:rtl;">
+  <li><br></li>
+  {% if user.is_authenticated %}
+  {% if user.is_sportclub %}
+  {% if user.sportclubs.salons.count > 1 or user.sportclubs.salons.count == 0 %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'sportclub:workspace' slug=user.slug %}">مدیریت سالن ها<i style="color: white;" class=" material-icons teal-text">account_balance</i></a></li>
+  {% else %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'session:workspace' pk=user.sportclubs.salons.get.pk %}">مدیریت سانس ها<i style="color: white;" class=" material-icons teal-text">event_note</i></a></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'sportclub:workspace' slug=user.slug %}">مدیریت سالن ها<i style="color: white;" class=" material-icons teal-text">account_balance</i></a></li>
+  {% endif %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'sportclub:profile' slug=user.slug %}">پروفایل<i style="color: white;" class=" material-icons teal-text">account_circle</i></a></li>
+  {% endif %}
+  {% if user.is_commonuser %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'commonuser:dashboard' slug=user.slug %}">سانس های شما<i style="color: white;" class=" material-icons teal-text">event</i></a></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'commonuser:profile' slug=user.slug %}">پروفایل<i style="color: white;" class=" material-icons teal-text">account_circle</i></a></li>
+  {% endif %}
+  {% if user.is_superuser %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'accounts:workspace' slug=user.slug %}">میز کار<i style="color: white;" class=" material-icons teal-text">event_note</i></a></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'accounts:profile' slug=user.slug %}">پروفایل<i style="color: white;" class=" material-icons teal-text">account_circle</i></a></li>
+  {% endif %}
+  {% if user.is_masteruser %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'masteruser:workspace' slug=user.slug %}">میز کار<i style="color: white;" class=" material-icons teal-text">event_note</i></a></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'masteruser:profile' slug=user.slug %}">پروفایل<i style="color: white;" class=" material-icons teal-text">account_circle</i></a></li>
+  {% endif %}
+  {% else %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'accounts:login' %}">ورود<i  class=" material-icons teal-text">keyboard_tab</i></a></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'commonuser:signup' %}">عضویت<i  class=" material-icons teal-text">person_add</i></a></li>
+  {% endif %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'sportclub:publiclist' %}">مجموعه های ورزشی<i  class=" material-icons teal-text">search</i></a></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'salon:publiclist' %}">سالن ها<i  class=" material-icons teal-text">search</i></a></li>
+
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'session:publiclist' %}">سانس ها<i  class=" material-icons teal-text">search</i></a></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37; direction:ltr;" href="{% url 'session:todaypubliclist' %}">!امروزو رزرو کن<i  class=" material-icons teal-text">event_available</i></a></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="https://varzesh-kon.ir/blog/">وبلاگ<i style="color: white;" class=" material-icons teal-text">question_answer</i></a></li>
+  {% if not user.is_authenticated or user.is_commonuser %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'company:sportclubcontact' %}">ثبت مجموعه ورزشی<i style="color: white;" class=" material-icons teal-text">beenhere</i></a></li>
+  {% endif %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'company:contactus' %}">ارتباط با ما<i style="color: white;" class=" material-icons teal-text">phone</i></a></li>
+  {% if user.is_authenticated %}
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'logout' %}">خروج<i style="color: white;" class=" material-icons teal-text">close</i></a></li>
+  {% endif %}
+</ul>
+
+
+
+<ul id="dropdown1" class="dropdown-content white z-depth-3" style="direction:ltr; border: #d4af37 1px solid;">
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'sportclub:publiclist' %}">مجموعه های ورزشی<i  class=" material-icons teal-text">search</i></a></li>
+  <li class="divider gold"></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'salon:publiclist' %}">سالن ها<i  class=" material-icons teal-text">search</i></a></li>
+  <li class="divider gold"></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'session:publiclist' %}">سانس ها<i  class=" material-icons teal-text">search</i></a></li>
+  <li class="divider gold"></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'session:todaypubliclist' %}">!امروزو رزرو کن<i  class=" material-icons teal-text">event_available</i></a></li>
+  <li class="divider gold"></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="https://varzesh-kon.ir/blog/">وبلاگ<i style="color: white;" class=" material-icons teal-text">question_answer</i></a></li>
+  {% if not user.is_authenticated or user.is_commonuser %}
+  <li class="divider gold"></li>
+  <li class="gold-text"><a class="fLalezar" style="color:#d4af37;" href="{% url 'company:sportclubcontact' %}">ثبت مجموعه ورزشی<i style="color: white;" class=" material-icons teal-text">beenhere</i></a></li>
+  {% endif %}
+</ul>
+<footer  class="page-footer white">
+    <div class="container ">
+      <div class="row">
+        <div class="col l6 m6 s12" style="direction:ltr;">
+          <h4 class="gold-text fLalezar">سامانه ورزش کن</h4>
+          <a href="{% url 'index' %}"><img class="brand-logo center" src="/media/logos/white_footer.png" width="160"></a>
+        </div>
+        <div class="col l4 m4 offset-l2 offset-m2 s12 right-align fHarmattan gold-text">
+          <ul><h5>
+            <li><a class="gold-text" href="{% url 'company:contactus' %}">ارتباط با ما</a></li>
+            <li><a class="gold-text" href="{% url 'company:sportclubcontact' %}">ثبت مجموعه ورزشی در سامانه</a></li>
+            <li><a class="gold-text " href="{% url 'company:faqs' %}">سوالات متداول</a></li>
+            <li><a class="gold-text " href="{% url 'company:aboutus' %}">درباره ما</a></li>
+            <li><a class="gold-text" href="{% url 'company:termsdetail' %}">قوانین سایت</a></li></h5>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright grey darken-2">
+      <div class="fLalezar container white-text">
+    1398  سامانه ورزش کن
+
+      </div>
+    </div>
+</footer>
+<!--NavOptions-->
+
+<script src="{% static 'js/datepicker/calendar.min.js' %}" ></script>
+<script src="{% static 'js/datepicker/jquery.Bootstrap-PersianDateTimePicker.js' %}" ></script>
+
+      <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+      <script src="{% static 'js/bin/anime.min.js' %}"> </script>
+      <script src="{% static 'js/materialize.min.js' %}"> </script>
+      <script>
+        M.AutoInit();
+        $(document).ready(function(){
+          $('.sidenav').sidenav({
+            edge:'right',
+          });
+        });
+
+
+        $(document).ready(function(){
+          $('.tooltipped').tooltip();
+        });
+
+      </script>
+
+      {% block script_block %}
+      {% endblock %}
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $(".dropdown-trigger").dropdown({ constrainWidth: false, alignment: 'right' });
+      });
+      </script>
+
+    </body>
+  </html>

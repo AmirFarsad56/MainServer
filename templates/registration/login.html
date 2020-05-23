@@ -1,0 +1,91 @@
+{% extends "base_templates/base_public.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”index,follow”>
+<title>
+    ورود | سامانه ورزش کن
+</title>
+{% endblock %}
+
+{% block body_block %}
+<div class="section">
+  <div class="container">
+  <div class="container">
+<span class="center-align"><h5 class="fHarmattan gold-text";>برای استفاده از سایت باید وارد حساب کاربری خود شوید</h5><br><br></span>
+  <div class="row center">
+  <div class="card-panel hoverable grey lighten-3 z-depth-5">
+
+        <form method="POST">
+          <div class="row">
+<span class="center-align"><h3 class="fLalezar gold-text";>ورود</h3><br></span>
+          <div class="col s2 m2 l2 gold-text right-align fLalezar" style="direction:ltr;">
+            <h6 style="margin-top:34px;" >+98</h6>
+
+            </div>
+          <div class="input-field col s10 m10 l4">
+  {{form.username}}
+  <label class="fLalezar" for="id_username">شماره همراه</label>
+</div>
+
+<div  class="input-field col s12 m12 l5 red-text">
+{{form.password}}
+
+<label class="fLalezar right-align" for="id_password">رمز عبور</label>
+</div>
+
+</div>
+
+            {% if form.errors %}
+            <div class="row">
+            <p id='area' class="fHarmattan black-text">نام کاربری یا رمز عبور اشتباه است</p>
+            </div>
+            {% endif %}
+
+                {% csrf_token %}
+
+                <button class="hoverable btn waves-effect waves-dark gold white-text z-depth-3 fLalezar" type="submit">ورود
+    </button>
+    <br><br>
+            <a class="black-text fHarmattan" href="{% url 'accounts:forgotpassword' %}">فراموشی رمز عبور</a>
+        </form>
+  </div>
+  <br>
+  </div>
+  </div>
+
+  <div class="row center center-align">
+
+
+  <div style="border-top: solid grey 1px;" class="col s5 m5 l5">
+
+  </div>
+  <div style="margin-top:-12px;" class="center col s2 m2 l2">
+<i class="material-icons small">fingerprint</i>
+  </div>
+  <div style="border-top: solid grey 1px;" class="col s5 m5 l5">
+
+  </div>
+</div>
+<div class="container">
+
+  <div class="row center">
+    <span class="center-align"><h3 class="fHarmattan gold-text";>ثبت نام نکرده اید؟</h3><br></span>
+    <a target="_blank" href="{% url 'commonuser:signup' %}" style="font-size:20px;" class="hoverable btn waves-effect waves-dark gold white-text z-depth-3 fLaleza btn-large fLalezar" >عضویت
+</a>
+  </div>
+  <br><br><br>
+
+</div>
+
+</div>
+
+</div>
+{% endblock %}
+{% block script_block %}
+<script type="text/javascript">
+  $(document).ready(function() {
+  M.updateTextFields();
+});
+</script>
+
+{% endblock %}

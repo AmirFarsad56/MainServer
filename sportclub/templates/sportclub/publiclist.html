@@ -1,0 +1,217 @@
+{% extends "base_templates/base_sidesearch.html" %}
+{% load customtags_sportclub %}
+{% load leaflet_tags %}
+{% load static %}
+{% block head_block %}
+{% leaflet_css %}
+{% leaflet_js %}
+<meta name=”robots” content=”index,follow”>
+<title>
+    لیست مجموعه های ورزشی | سامانه ورزش کن
+</title>
+<link href="{% static 'css/aos.css' %}" rel="stylesheet">
+<style media="screen">
+  {% for sportclub in  filter.qs %}
+    #gis{{sportclub.pk}} {width:100%;height:400px; z-index: 4;}
+  {% endfor %}
+  header, section, footer {
+  padding-right: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, section, footer {
+    padding-right: 0;
+  }
+}
+</style>
+
+{% endblock %}
+
+
+{% block body_block %}
+
+<div class="row">
+  <ul id="slide-out" style="direction:ltr; border-top: #d4af37 10px solid; margin-top:63px; padding-bottom:150px;" class="sidenav sidenav-fixed grey lighten-3">
+
+    <br>
+    <li class="center fLalezar teal-text" style="font-size:120%" >جستجوی پیشرفته</li>
+    <li><div style="border-top: #009688 2px solid;" class="divider teal"></div></li>
+    <br>
+    <form  method="get">
+<li></li>
+<div class="input-field col s12">
+  {{filter.form.serial_number}}
+  <label class="fLalezar teal-text teal-text" style="font-size:90%" for="serial_number">سریال مجموعه ورزشی</label>
+</div>
+      <div class="input-field col s12">
+        {{filter.form.sportclub_name}}
+        <label class="fLalezar teal-text" style="font-size:90%" for="sportclub_name">نام مجموعه ورزشی شامل</label>
+      </div>
+      <div class="input-field col s12">
+        {{filter.form.region}}
+        <label class="fLalezar teal-text" style="font-size:90%" for="region">اسم استان شامل</label>
+      </div>
+      <div class="input-field col s12">
+        {{filter.form.company_phone_number}}
+        <label class="fLalezar teal-text" style="font-size:90%" for="company_phone_number">شماره تلفن ثابت شامل</label>
+      </div>
+
+
+
+        <li class="center"><button class="fLalezar center-align hoverable btn waves-effect waves-dark teal white-text z-depth-3" type="submit">جستجو
+  </button></li><br><br><br><br><br><br>
+
+    </form>
+  </ul>
+  <section  class=" grey lighten-2 fLalezar">
+
+    <div class=" grey lighten-2 fLalezar">
+
+
+<br><br>
+<span class="center-align"><h3 class="fLalezar teal-text";>لیست مجموعه های ورزشی</h3><br><br></span>
+
+
+
+  <div class="row center">
+    {% for sportclub in sportclubs %}
+    {% if sportclub.user.is_active %}
+        <div class="col s12 m12 l6 ">
+  <div style="padding:8px; margin:4%; border-radius: 25px; border-top: 5px solid #d4af37;" class="card hoverable grey lighten-3  z-depth-5 teal-text" data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom" data-aos-duration="1300">
+    <h6>
+<div class="row">
+  <div class="row">
+    <h5 class="fLalezar black-text">اطلاعات کاربری</h5>
+
+  </div>
+    </div>
+
+<div class="fHarmattan">
+
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.sportclub_name}}</div>
+      <div class="fLalezar col s6 m6 l6 left-align fLalezar">نام مجموعه ورزشی</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.serial_number}}</div>
+      <div class="fLalezar col s6 m6 l6 left-align fLalezar">سریال مجموعه ورزشی</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.user.first_name}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">نام</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.user.last_name}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">نام خانوادگی</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.user.email}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">ایمیل</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.company_phone_number}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">شماره تلفن ثابت</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.phone_number}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">شماره تلفن همراه</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.region}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">استان</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.address}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">آدرس</div>
+    </div>
+    {% if sportclub.info %}
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.info}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">اطلاعات دیگر</div>
+    </div>
+    {% endif %}
+    {% if sportclub.terms_and_conditions %}
+    <div class="row">
+      <h5 class="black-text fLalezar">قوانین خاص مجموعه ورزشی</h5>
+
+    <div class="col s12 m12 l12 right-align black-text">{{sportclub.terms_and_conditions|linebreaks}}</div>
+
+  </div>
+    {% endif %}
+
+  </div>
+    <br>
+
+<h5 class="black-text fLalezar">موقعیت</h5>
+<br>
+{% leaflet_map sportclub.pk|pk_to_str callback=sportclub.pk|pk_to_map_init %}
+<br><br><br>
+<div class="row">
+  <div class="col s12 m12 l12 center-align"><a style="white-space:pre" href="{% url 'salon:publiclistforsportclub' pk=sportclub.pk %}" class="hoverable waves-effect waves-light btn teal white-text fLalezar"><h6><span>         </span>سالن های این مجموعه<span>        </span></h6></a><p></p>
+</div>
+</div>
+
+</h6>
+  </div>
+
+</div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+
+<div class="container center">
+
+
+<ul  class="pagination  z-depth-5 hoverable white fMarkazi">
+  {% if sportclubs.has_previous %}
+  <li class="waves-effect"><a href="?page=1">&laquo; اولین صفحه</a></li>
+      <li class="waves-effect"><a href="?page={{ sportclubs.previous_page_number }}">قبلی  </a></li>
+
+  {% endif %}
+  <li  style="white-space:pre;"  class="disabled active">  <span>صفحه</span> <span>{{ sportclubs.number }}</span>  <span>از</span> <span>{{ sportclubs.paginator.num_pages }}</span> </li>
+
+  {% if sportclubs.has_next %}
+      <li class="waves-effect"><a href="?page={{ sportclubs.next_page_number }}">بعدی</a></li>
+      <li class="waves-effect"><a href="?page={{ sportclubs.paginator.num_pages }}">آخرین صفحه &raquo;</a></li>
+
+  {% endif %}
+
+</ul>
+</div>
+
+
+
+</div>
+
+
+</section>
+<script type="text/javascript">
+{% for sportclub in filter.qs %}
+    function map_init_{{sportclub.pk}} (map, options) {
+        // get point lat and lon
+        var lon = "{{ sportclub.location.x }}";
+        var lat = "{{ sportclub.location.y }}";
+        // zoom to point & add it to map
+        map.setView([lat, lon], 12  );
+        L.marker([lat, lon]).addTo(map);
+    }
+{% endfor %}
+</script>
+
+
+
+{% endblock %}
+{% block script_block %}
+<script src="{% static 'js/aos.js' %}"></script>
+<script>
+AOS.init();
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+  M.updateTextFields();
+});
+
+</script>
+{% endblock %}

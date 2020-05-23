@@ -1,0 +1,57 @@
+{% extends "base_templates/base_public.html" %}
+
+{% block head_block %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+    تایید حساب | سامانه ورزش کن
+</title>
+{% endblock %}
+
+{% block body_block %}
+<div class="section">
+  <div class="container">
+  <div class="container"><br>
+<span class="center-align"><h3 class="fLalezar gold-text";>تایید حساب</h3><br><br></span>
+  <div class="row center">
+  <div class="fLalezar card-panel hoverable grey lighten-3 z-depth-5">
+
+        <form method="POST">
+          {{confirmation_form.Hfield}}
+          <div class="input-field col s12">
+  {{confirmation_form.code}}
+  <label class="fLalezar" for="code">کد تایید</label>
+</div>
+<div class="row">
+  <div class="col s6 m6 l6">
+    {{phone_number}}
+  </div>
+  <div class="col s6 m6 l6">
+    شماره ای که کد به آن فرستاده شده
+  </div>
+
+</div>
+
+            {% if form.errors %}
+            <p class="fLalezar white-text">{{form.error}}</p>
+            {% endif %}
+
+                {% csrf_token %}
+
+                <button class="fLalezar hoverable btn waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
+    </button>
+        </form>
+  </div>
+</div>
+</div>
+
+</div>
+
+</div>
+{% endblock %}
+{% block script_block %}
+<script type="text/javascript">
+  $(document).ready(function() {
+  M.updateTextFields();
+});
+</script>
+{% endblock %}

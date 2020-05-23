@@ -1,0 +1,175 @@
+{% extends "base_templates/base_sidesearch.html" %}
+{% load customtags_sportclub %}
+{% load leaflet_tags %}
+{% load static %}
+{% block head_block %}
+{% leaflet_css %}
+{% leaflet_js %}
+<meta name=”robots” content=”noindex,follow”>
+<title>
+    مجموعه ورزشی | سامانه ورزش کن
+</title>
+<style media="screen">
+    #gis{{sportclub.pk}} {width:100%;height:400px; z-index: 4;}
+</style>
+
+{% endblock %}
+
+
+{% block body_block %}
+
+<div class="row">
+
+  <div   class="col s12 m12 l12 grey lighten-2 fMarkazi">
+
+<div class="container">
+
+<br><br>
+<span class="center-align"><h3 class="fLalezar teal-text";>مجموعه ورزشی</h3><br><br></span>
+
+
+
+  <div class="row center">
+    {% if sportclub.user.is_active %}
+    <div style="padding:8px;border-radius: 25px; border-top: 5px solid #d4af37;" class="card hoverable grey lighten-3  z-depth-5 teal-text" >
+    <h6>
+<div class="row">
+  <div class="row">
+    <h5 class="fLalezar black-text">اطلاعات کاربری</h5>
+
+  </div>
+    </div>
+
+<div class="fHarmattan">
+
+
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.sportclub_name}}</div>
+      <div class="fLalezar col s6 m6 l6 left-align fLalezar">نام مجموعه ورزشی</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.serial_number}}</div>
+      <div class="fLalezar col s6 m6 l6 left-align fLalezar">سریال مجموعه ورزشی</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.user.first_name}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">نام</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.user.last_name}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">نام خانوادگی</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.user.email}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">ایمیل</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.company_phone_number}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">شماره تلفن ثابت</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.phone_number}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">شماره تلفن همراه</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.region}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">استان</div>
+    </div>
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.address}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">آدرس</div>
+    </div>
+    {% if sportclub.info %}
+    <div class="row">
+      <div class="col s6 m6 l6 right-align black-text">{{sportclub.info}}</div>
+      <div class="col s6 m6 l6 left-align fLalezar">اطلاعات دیگر</div>
+    </div>
+    {% endif %}
+    {% if sportclub.terms_and_conditions %}
+    <div class="row">
+      <h5 class="black-text fLalezar">قوانین خاص مجموعه ورزشی</h5>
+
+    <div class="col s12 m12 l12 right-align black-text">{{sportclub.terms_and_conditions|linebreaks}}</div>
+    </div>
+    {% endif %}
+</div>
+    <br>
+
+<h5 class="black-text fLalezar  ">موقعیت</h5>
+<br>
+{% leaflet_map sportclub.pk|pk_to_str callback=sportclub.pk|pk_to_map_init %}
+<br><br><br>
+<div class="row">
+  <div class="col s12 m12 l12 center-align"><a style="white-space:pre" href="{% url 'salon:publiclistforsportclub' pk=sportclub.pk %}" class="hoverable waves-effect waves-light btn teal white-text fLalezar"><h6><span>         </span>سالن های این مجموعه<span>        </span></h6></a><p></p>
+</div>
+</div>
+
+</h6>
+  </div>
+
+  <br><br>
+  {% else %}
+    <div style="padding:8px;border-radius: 25px; border-top: 5px solid #d4af37;" class="card hoverable grey lighten-3  z-depth-5 teal-text" >
+    <h6>
+      متاسفانه قرارداد این مجموعه ورزشی با سامانه ورزش کن تمام شده است
+    </h6>
+  </div>
+
+  {% endif %}
+</div>
+
+
+
+
+</div>
+
+</div>
+<footer style="width:108%; margin-left:-10px;margin-right:-10px; margin-bottom:-30px; " class="page-footer white">
+    <div class="container ">
+      <div class="row">
+        <div class="col l6 m6 s12" style="direction:ltr;">
+          <h4 class="gold-text fLalezar">سامانه ورزش کن</h4>
+          <a href="{% url 'index' %}"><img class="brand-logo center" src="/media/logos/white_footer.png" width="160"></a>
+        </div>
+        <div class="col l4 m4 offset-l2 offset-m2 s12 right-align fHarmattan gold-text">
+          <ul><h5>
+            <li><a class="gold-text" href="{% url 'company:contactus' %}">ارتباط با ما</a></li>
+            <li><a class="gold-text" href="{% url 'company:sportclubcontact' %}">ثبت مجموعه ورزشی در سامانه</a></li>
+            <li><a class="gold-text " href="{% url 'company:faqs' %}">سوالات متداول</a></li>
+            <li><a class="gold-text " href="{% url 'company:aboutus' %}">درباره ما</a></li>
+            <li><a class="gold-text" href="{% url 'company:termsdetail' %}">قوانین سایت</a></li></h5>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright grey darken-2">
+      <div class="fLalezar container white-text">
+    1398  سامانه ورزش کن
+
+      </div>
+    </div>
+</footer>
+</div>
+<script type="text/javascript">
+    function map_init_{{sportclub.pk}} (map, options) {
+        // get point lat and lon
+        var lon = "{{ sportclub.location.x }}";
+        var lat = "{{ sportclub.location.y }}";
+        // zoom to point & add it to map
+        map.setView([lat, lon], 12  );
+        L.marker([lat, lon]).addTo(map);
+    }
+</script>
+
+
+
+{% endblock %}
+{% block script_block %}
+
+<script type="text/javascript">
+  $(document).ready(function() {
+  M.updateTextFields();
+});
+
+</script>
+{% endblock %}

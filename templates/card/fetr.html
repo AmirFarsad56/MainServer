@@ -1,0 +1,333 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link href="https://fonts.googleapis.com/css?family=Lalezar&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css?family=Harmattan&display=swap" rel="stylesheet">
+    <title>رزرو سالن ورزشی سامانه ورزش کن | تبریک عید سعید فطر</title>
+    <script src="{% static 'js/animejs/anime.min.js' %}"></script>
+    <style media="screen">
+      .button {
+  margin-top:10%;
+  width: 70%;
+  height: 120px;
+
+  background-color: #ccff90;
+  position: absolute;
+  left: 50%;
+  margin-left: -35%;
+  opacity:0.5
+}
+.button2 {
+width: 100%;
+background-color: #ccff90;
+position: absolute;
+left: 50%;
+margin-left: -50%;
+opacity:0.01;
+direction:rtl;
+margin-bottom:100px;
+}
+p{
+  font-size:27px;
+  font-family: 'Harmattan', sans-serif;
+}
+h1{
+    font-family: 'Lalezar', cursive;
+    font-size: 40px;
+    color: purple;
+}
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+}
+.container{
+  margin:10px;
+}
+@gps-burg:           rgba(182, 15, 97, 0.9);
+@gps-orange:         rgba(242, 112, 45, 0.9);
+@gps-skyblue:        rgba(45, 181, 167, 0.9);
+@gps-purple:         rgba(190, 61, 244, 0.9);
+@gps-green:          rgba(180, 224, 67, 0.9);
+@gps-yellow:         rgba(242, 194, 58, 0.9);
+
+
+
+.balloon {
+  width: 738px;
+  margin: 0 auto;
+  padding-top: 30px;
+  position: relative;
+
+}
+.balloon > div {
+   width:10%;
+  height:300%;
+  background: @gps-burg;
+  border-radius:0;
+  border-radius:80% 80% 80% 80%;
+  margin: -10%;
+  position: absolute;
+  padding:30px;
+  box-shadow:inset 17px 7px 10px @gps-burg;
+  -webkit-transform-origin: bottom center;
+}
+.balloon > div:nth-child(1){
+  background: @gps-burg;
+  left: 0;
+  box-shadow:inset 10px 10px 10px darken(@gps-burg, 10%);
+  -webkit-animation:balloon1 6s ease-in-out infinite;
+  -moz-animation:balloon1 6s ease-in-out infinite;
+  -o-animation:balloon1 6s ease-in-out infinite;
+  animation:balloon1 6s ease-in-out infinite;
+  background-color:grey;
+
+  &:before {
+   color: @gps-burg ;
+  }
+
+}
+.balloon > div:nth-child(2){
+  background: @gps-orange;
+  left: 90px;
+  box-shadow:inset 10px 10px 10px darken(@gps-orange, 10%);
+   -webkit-animation:balloon2 6s ease-in-out infinite;
+  -moz-animation:balloon2 6s ease-in-out infinite;
+  -o-animation:balloon2 6s ease-in-out infinite;
+  animation:balloon2 6s ease-in-out infinite;
+  background-color:pink;
+  &:before {
+   color: @gps-orange ;
+  }
+
+}
+.balloon > div:nth-child(3){
+  background: @gps-skyblue;
+  left: 180px;
+  box-shadow:inset 10px 10px 10px darken(@gps-skyblue, 10%);
+   -webkit-animation:balloon4 6s ease-in-out infinite;
+  -moz-animation:balloon4 6s ease-in-out infinite;
+  -o-animation:balloon4 6s ease-in-out infinite;
+  animation:balloon4 6s ease-in-out infinite;
+  background-color:green;
+  &:before {
+   color: @gps-skyblue ;
+  }
+
+}
+.balloon > div:nth-child(4){
+  background: @gps-purple;
+  left: 270px;
+  box-shadow:inset 10px 10px 10px darken(@gps-purple, 10%);
+   -webkit-animation:balloon1 5s ease-in-out infinite;
+  -moz-animation:balloon1 5s ease-in-out infinite;
+  -o-animation:balloon1 5s ease-in-out infinite;
+  animation:balloon1 5s ease-in-out infinite;
+  background-color:purple;
+  &:before {
+   color: @gps-purple ;
+  }
+
+}
+.balloon > div:nth-child(5){
+  background: @gps-green;
+  left: 360px;
+  box-shadow:inset 10px 10px 10px darken(@gps-green, 10%);
+   -webkit-animation:balloon3 5s ease-in-out infinite;
+  -moz-animation:balloon3 5s ease-in-out infinite;
+  -o-animation:balloon3 5s ease-in-out infinite;
+  animation:balloon3 5s ease-in-out infinite;
+  background-color:orange;
+  &:before {
+   color: @gps-green ;
+  }
+
+}
+.balloon > div:nth-child(6){
+  background: @gps-yellow;
+  left: 450px;
+  box-shadow:inset 10px 10px 10px darken(@gps-yellow, 10%);
+  -webkit-animation:balloon2 3s ease-in-out infinite;
+  -moz-animation:balloon2 3s ease-in-out infinite;
+  -o-animation:balloon2 3s ease-in-out infinite;
+  animation:balloon2 3s ease-in-out infinite;
+  background-color:blue;
+  &:before {
+  }
+
+}
+.balloon > div:before {
+  color:red;
+  position:absolute;
+  bottom:-11px;
+  left: 52px;
+  content:"▲";
+  font-size:1em;
+}
+
+
+/*BALLOON 1 4*/
+@-webkit-keyframes balloon1 {
+  0%,100%{ -webkit-transform:translateY(0) rotate(-6deg);}
+  50%{ -webkit-transform:translateY(-20px) rotate(8deg); }
+}
+@-moz-keyframes balloon1 {
+  0%,100%{ -moz-transform:translateY(0) rotate(-6deg);}
+  50%{ -moz-transform:translateY(-20px) rotate(8deg); }
+}
+@-o-keyframes balloon1 {
+  0%,100%{ -o-transform:translateY(0) rotate(-6deg);}
+  50%{ -o-transform:translateY(-20px) rotate(8deg); }
+}
+@keyframes balloon1 {
+  0%,100%{ transform:translateY(0) rotate(-6deg);}
+  50%{ transform:translateY(-20px) rotate(8deg); }
+}
+
+/* BAllOON 2 5*/
+@-webkit-keyframes balloon2 {
+  0%,100%{ -webkit-transform:translateY(0) rotate(6eg);}
+  50%{ -webkit-transform:translateY(-30px) rotate(-8deg); }
+}
+@-moz-keyframes balloon2 {
+  0%,100%{ -moz-transform:translateY(0) rotate(6deg);}
+  50%{ -moz-transform:translateY(-30px) rotate(-8deg); }
+}
+@-o-keyframes balloon2 {
+  0%,100%{ -o-transform:translateY(0) rotate(6deg);}
+  50%{ -o-transform:translateY(-30px) rotate(-8deg); }
+}
+@keyframes balloon2 {
+  0%,100%{ transform:translateY(0) rotate(6deg);}
+  50%{ transform:translateY(-30px) rotate(-8deg); }
+}
+
+
+/* BAllOON 0*/
+@-webkit-keyframes balloon3 {
+  0%,100%{ -webkit-transform:translate(0, -10px) rotate(6eg);}
+  50%{ -webkit-transform:translate(-20px, 30px) rotate(-8deg); }
+}
+@-moz-keyframes balloon3 {
+ 0%,100%{ -moz-transform:translate(0, -10px) rotate(6eg);}
+  50%{ -moz-transform:translate(-20px, 30px) rotate(-8deg); }
+}
+@-o-keyframes balloon3 {
+ 0%,100%{ -o-transform:translate(0, -10px) rotate(6eg);}
+  50%{ -o-transform:translate(-20px, 30px) rotate(-8deg); }
+}
+@keyframes balloon3 {
+ 0%,100%{ transform:translate(0, -10px) rotate(6eg);}
+  50%{ transform:translate(-20px, 30px) rotate(-8deg); }
+}
+
+/* BAllOON 3*/
+@-webkit-keyframes balloon4 {
+  0%,100%{ -webkit-transform:translate(10px, -10px) rotate(-8eg);}
+  50%{ -webkit-transform:translate(-15px, 20px) rotate(10deg); }
+}
+@-moz-keyframes balloon4 {
+  0%,100%{ -moz-transform:translate(10px, -10px) rotate(-8eg);}
+  50%{ -moz-transform:translate(-15px, 10px) rotate(10deg); }
+}
+@-o-keyframes balloon4 {
+  0%,100%{ -o-transform:translate(10px, -10px) rotate(-8eg);}
+  50%{ -o-transform:translate(-15px, 10px) rotate(10deg); }
+}
+@keyframes balloon4 {
+  0%,100%{ transform:translate(10px, -10px) rotate(-8eg);}
+  50%{ transform:translate(-15px, 10px) rotate(10deg); }
+}
+    </style>
+  </head>
+  <body  onload="mouseHoverAnimation()">
+    <div style="margin:80px;">
+
+    </div>
+    <div  class="container">
+      <div class="balloon">
+        <div><span style="padding-left:30px;">!</span></div>
+        <div><span style="padding-left:30px;">مبارک</span></div>
+        <div><span style="padding-left:30px;">فطر</span></div>
+        <div><span style="padding-left:30px;">سعید</span></div>
+        <div><span style="padding-left:30px;">عید</span></div>
+        <div><span style="padding-left:30px;">☺</span></div>
+      </div>
+    </div><br>
+<div style="text-align:center">
+  <div href="#" class="button"></div>
+  </div>
+    <div class="button2">
+      <div class="container">
+
+      <h1 style="text-align:center;" >عید سعید فطر مبارک</h1>
+      <p style="text-align:right">
+        بگذشت مه روزه ، عيد آمد و عيد آمد
+<br>     بگذشت شب هجران، معشوق پديد آمد
+</p><p style="text-align:left">
+ آن صبح چو صادق شد، عذراي تو وامق شد
+<br>    معشوق توعاشق شد، شيخ تو مريد آمد
+</p><p style="text-align:right">
+ شد جنگ و نظر آمد، شد زهر و شکر آمد
+<br> شد سنگ و گهر آمد، شد قفل و کليد آمد
+</p><p style="text-align:left">
+ جان از تن آلوده، هم پاک به پاکي رفت
+ <br>هرچند چو خورشيدي بر پاک و پليد آمد
+</p><p style="text-align:right">
+ از لذت جام تو دل مانده به دام تو
+<br>  جان نيز چو واقف شد، او نيز دويد آمد
+</p><p style="text-align:left">
+ بس توبه شايسته برسنگ تو بشکسته
+<br> بس زاهد و بس عابد کو خرقه دريد آمد
+</p><p style="text-align:right">
+ باغ از دي نامحرم سه ماه نمي زد دم
+<br> بر بوي بهار تو، ازغيب رسيد آمد</p>
+      <p style="text-align:center">«وَ یقُولُ: یا عِبَادِی سَلُونِی فَوَ عِزَّتِی وَ جَلَالِی لَا تَسْأَلُونِّی الْیوْمَ فِی جَمْعِكُمْ لِآخِرَتِكُمْ وَ دُنْیاكُمْ إِلَّا أَعْطَیتُكُمْ » ؛ </p><p style="text-align:center">
+و خداوند مى‏ فرماید: اى بندگان
+ من! [هر چه مى‏ خواهید] از من بخواهید كه به عزت و جلال خودم سوگند که امروز در این
+ اجتماع خویش، هر چه براى دنیا وآخرت خود بخواهید عطا مى‏ كنم.</p>
+    </div>
+    </div>
+<img src="{% static 'pics/mail.jpg' %}" alt="">
+
+  </body>
+
+  <script>
+    const button = document.querySelector('.button');
+    const button2 = document.querySelector('.button2');
+    const shape = document.querySelector('.shape');
+
+const mouseHoverAnimation = () => {
+    anime({
+        targets: button,
+        delay: 400,
+        endDelay: 1,
+        translateY: -410,
+        loop: 1,
+        backgroundColor: '#FFF',
+        opacity:0.01,
+        easing: 'easeInOutSine',
+        borderRadius: ['0%', '10%'],
+        scale:3,
+
+    })
+    anime({
+        targets: button2,
+        delay: 1500,
+        translateY: -150,
+        easing: 'easeInOutSine',
+        borderRadius: ['10%', '0%'],
+        scale:0.6,
+        opacity:1,
+
+    })
+
+}
+
+  </script>
+</html>
