@@ -1,4 +1,4 @@
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 
 {% block head_block %}
 <meta name=”robots” content=”noindex,follow”>
@@ -9,36 +9,37 @@
 
 {% block body_block %}
 <div class="section">
-  <div class="container">
   <div class="container"><br>
-<span class="center-align"><h3 class="fMarkazi gold-text";>افزودن سالن</h3><br><br></span>
+<span class="center-align"><h3 class="fLalezar teal-text";>افزودن سالن</h3><br><br></span>
   <div class="row center">
-  <div class="card-panel hoverable pink accent-3 z-depth-5">
+  <div class="card-panel hoverable grey lighten-3 z-depth-5">
 
         <form enctype="multipart/form-data" method="POST">
           {{salon_form.Hfield}}
           {% csrf_token %}
           <div class="input-field col s12">
             {{salon_form.area}}
-            <label class="fMarkazi" for="username">(انداره سالن (متر مربع</label>
+            <label class="fLalezar" for="area">انداره سالن (متر مربع)</label>
           </div>
           <div class="input-field col s12">
             {{salon_form.floor_type}}
-            <label class="fMarkazi" for="username">کیفیت کفپوش سالن</label>
+            <label class="fLalezar" for="floor_type">کیفیت کفپوش سالن</label>
           </div>
-
-          <h5 class="fMarkazi gold-text">ورزش هایی که میشود در این سالن انجام داد</h5>
+<div class="row">
+<br>
+</div>
+          <h5 class="fLalezar gold-text">زمینه سالن</h5>
           <div class="row ">
           <div class="input-field col s6 m6 l6">
             <label>
               {{salon_form.is_football}}
-              <span>(فوتبال (چمن‌</span>
+              <span class="fLalezar">فوتبال (چمن)</span>
             </label>
           </div>
           <div class="input-field col s6 m6 l6">
             <label>
               {{salon_form.is_futsall}}
-              <span>فوتسال</span>
+              <span class="fLalezar">فوتسال</span>
             </label>
           </div>
         </div>
@@ -46,13 +47,13 @@
           <div class="input-field col s6 m6 l6">
             <label>
               {{salon_form.is_volleyball}}
-              <span class="offset-m3">والیبال</span>
+              <span class="offset-m3 fLalezar">والیبال</span>
             </label>
           </div>
           <div class="input-field col s6 m6 l6">
             <label>
               {{salon_form.is_basketball}}
-              <span>بسکتبال</span>
+              <span class="fLalezar">بسکتبال</span>
             </label>
           </div>
         </div>
@@ -60,23 +61,23 @@
           <div class=" input-field col s6 m6 l6">
             <label class="rigth-align">
               {{salon_form.is_handball}}
-              <span>هندبال</span>
+              <span  class="fLalezar">هندبال</span>
             </label>
           </div>
         </div>
 <br><br>
-        <h5 class="fMarkazi gold-text">امکانات سالن</h5>
+        <h5 class="fLalezar gold-text">امکانات سالن</h5>
         <div class="row ">
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.air_conditioner}}
-            <span>تهویه هوا</span>
+            <span class="fLalezar" >تهویه هوا</span>
           </label>
         </div>
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.drinking_water}}
-            <span>آب آشامیدنی</span>
+            <span class="fLalezar" >آب آشامیدنی</span>
           </label>
         </div>
       </div>
@@ -84,13 +85,13 @@
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.shower}}
-            <span class="offset-m3">حمام</span>
+            <span class="offset-m3 fLalezar">حمام</span>
           </label>
         </div>
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.locker}}
-            <span>کمد</span>
+            <span class="fLalezar" >کمد</span>
           </label>
         </div>
       </div>
@@ -98,13 +99,13 @@
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.parking_area}}
-            <span class="offset-m3">پارکینگ</span>
+            <span class="offset-m3 fLalezar">پارکینگ</span>
           </label>
         </div>
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.changing_room}}
-            <span>رختکن</span>
+            <span class="fLalezar" >رختکن</span>
           </label>
         </div>
       </div>
@@ -112,13 +113,13 @@
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.wifi}}
-            <span class="offset-m3">وای فای</span>
+            <span class="offset-m3 fLalezar">وای فای</span>
           </label>
         </div>
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.safe_keeping}}
-            <span>امانتداری</span>
+            <span class="fLalezar" >امانتداری</span>
           </label>
         </div>
       </div>
@@ -126,13 +127,13 @@
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.ball_rent}}
-            <span class="offset-m3">اجاره توپ</span>
+            <span class="offset-m3 fLalezar">اجاره توپ</span>
           </label>
         </div>
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.buffet}}
-            <span>بوفه</span>
+            <span class="fLalezar" >بوفه</span>
           </label>
         </div>
       </div>
@@ -140,30 +141,30 @@
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.local_taxi}}
-            <span class="offset-m3">تاکسی ویژه</span>
+            <span class="offset-m3 fLalezar">تاکسی ویژه</span>
           </label>
         </div>
         <div class="input-field col s6 m6 l6">
           <label>
             {{salon_form.spectator_place}}
-            <span>جایگاه تماشاچی</span>
+            <span class="fLalezar" >جایگاه تماشاچی</span>
           </label>
         </div>
       </div>
 <br><br>
 <div class="input-field col s12">
   {{salon_form.six_to_twelve_sessions_discount}}
-  <label class="fMarkazi" for="username">درصد تخفیف برای کاربرانی که قراردادی به مدت بین ۶ تا ۱۲ جلسه تنظیم میکنند</label>
+  <label class="fLalezar" for="six_to_twelve_sessions_discount">درصد تخفیف برای کاربرانی که قراردادی به مدت بین ۶ تا ۱۲ جلسه تنظیم میکنند</label>
 </div>
 <div class="input-field col s12">
   {{salon_form.more_than_twelve_sessions_discount}}
-  <label class="fMarkazi" for="username">درصد تخفیف برای کاربرانی که قراردادی بین ۱۲ و ۲۴ جلسه تنظیم میکنند</label>
+  <label class="fLalezar" for="more_than_twelve_sessions_discount">درصد تخفیف برای کاربرانی که قراردادی بین ۱۲ و ۲۴ جلسه تنظیم میکنند</label>
 </div>
 <div class="input-field col s12">
   {{salon_form.more_than_24_sessions_discount}}
-  <label class="fMarkazi" for="username">درصد تخفیف برای کاربرانی که قراردادی بالای ۲۴ جلسه تنظیم میکنند</label>
+  <label class="fLalezar" for="more_than_24_sessions_discount">درصد تخفیف برای کاربرانی که قراردادی بالای ۲۴ جلسه تنظیم میکنند</label>
 </div>
-      <h5 class="fMarkazi gold-text">عکس های سالن</h5>
+      <h5 class="fLalezar gold-text">عکس های سالن</h5>
 
       {{formsets.management_form}}
             <div class="row ">
@@ -171,23 +172,24 @@
 
       <div class="input-field col s12 m6 l6">
         <div class="file-field input-field">
-  <div class="btn gold">
+  <div class="btn gold fLalezar white-text">
 {{formset}}
+<span>عکس</span>
   </div>
   <div class="file-path-wrapper">
-    <input class="file-path" type="text">
+    <input class="file-path black-text" type="text">
   </div>
 </div>
       </div>
     {% endfor %}
         </div>
             {% if salon_form.errors %}
-            <p class="fMarkazi white-text">مشکلی پیش آمد. لطفا فرم را دوباره و با دقت پر کنید</p>
+            <p class="fHarmattan black-text">مشکلی پیش آمد. لطفا فرم را دوباره و با دقت پر کنید</p>
             {% endif %}
             {% if formsets.errors %}
-            <p class="fMarkazi white-text">مشکلی پیش آمد. لطفا فرم را دوباره و با دقت پر کنید</p>
+            <p class="fHarmattan black-text">مشکلی پیش آمد. لطفا فرم را دوباره و با دقت پر کنید</p>
             {% endif %}
-          <button class="hoverable btn waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
+          <button class="hoverable btn-large waves-effect waves-dark gold white-text z-depth-3 fLalezar" type="submit">تایید
     </button>
     <br><br>
         </form>
@@ -195,7 +197,6 @@
 </div>
 </div>
 
-</div>
 
 </div>
 {% endblock %}

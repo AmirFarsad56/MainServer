@@ -1,4 +1,4 @@
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 
 {% block head_block %}
 <meta name=”robots” content=”noindex,follow”>
@@ -9,27 +9,26 @@
 
 {% block body_block %}
 <div class="section">
-  <div class="container">
   <div class="container"><br>
-<span class="center-align"><h3 class="fMarkazi gold-text";>ویرایش قوانین مجموعه ورزشی</h3><br><br></span>
+<span class="center-align"><h3 class="fLalezar gold-text";>ویرایش قوانین مجموعه ورزشی</h3><br><br></span>
   <div class="row center">
-  <div class="card-panel hoverable pink accent-3 z-depth-5">
+  <div class="card-panel hoverable grey lighten-3 z-depth-5">
 
         <form method="POST">
           {{form.Hfield}}
           <div class="input-field col s12">
   {{form.terms_and_conditions}}
-  <label class="fMarkazi" for="username">مقررات</label>
+  <label class="fLalezar" for="textarea1">مقررات</label>
 </div>
 
 
             {% if form.errors%}
-            <p class="fMarkazi white-text">مشکلی پیش آمد لطفا روباره سعی کنید</p>
+            <p class="fHarmattan white-text">مشکلی پیش آمد لطفا روباره سعی کنید</p>
             {% endif %}
 
                 {% csrf_token %}
 
-                <button class="hoverable btn waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
+                <button class="hoverable btn-large fLalezar waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
     </button>
     <br><br>
 
@@ -38,7 +37,6 @@
 </div>
 </div>
 
-</div>
 </div>
 {% endblock %}
 {% block script_block %}

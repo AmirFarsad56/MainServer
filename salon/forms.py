@@ -30,6 +30,13 @@ class SalonForm(forms.ModelForm):
                   'local_taxi','wifi','ball_rent','spectator_place','buffet',
                   'more_than_twelve_sessions_discount','six_to_twelve_sessions_discount',
                   'more_than_24_sessions_discount',)
+        widgets = {
+            'area': forms.TextInput(attrs={'id':'area'},),
+            'floor_type': forms.TextInput(attrs={'id':'floor_type'},),
+            'more_than_twelve_sessions_discount': forms.TextInput(attrs={'id':'more_than_twelve_sessions_discount'},),
+            'six_to_twelve_sessions_discount': forms.TextInput(attrs={'id':'six_to_twelve_sessions_discount'},),
+            'more_than_24_sessions_discount': forms.TextInput(attrs={'id':'more_than_24_sessions_discount'},),
+        }
 
 
 class SalonPictureForm(forms.ModelForm):
@@ -38,6 +45,9 @@ class SalonPictureForm(forms.ModelForm):
     class Meta():
         model = SalonPictureModel
         fields = ('picture',)
+        widgets = {
+            'picture': forms.FileInput(attrs={'style':'color:red;'},),
+        }
 
 
 
@@ -48,7 +58,7 @@ class SalonPictureUpdateForm(forms.ModelForm):
         model = SalonPictureModel
         fields = ('picture',)
         widgets = {
-            'picture': forms.FileInput(attrs={},),
+            'picture': forms.FileInput(attrs={'style':'background-color:red;'},),
         }
 
 

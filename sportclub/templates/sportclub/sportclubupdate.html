@@ -1,4 +1,4 @@
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 
 {% block head_block %}
 <meta name=”robots” content=”noindex,follow”>
@@ -9,42 +9,43 @@
 
 {% block body_block %}
 <div class="section">
-  <div class="container">
   <div class="container"><br>
-<span class="center-align"><h3 class="fMarkazi gold-text";>ویرایش مشخصات</h3><br><br></span>
+<span class="center-align"><h3 class="fLalezar gold-text";>ویرایش مشخصات</h3><br><br></span>
   <div class="row center">
-  <div class="card-panel hoverable pink accent-3 z-depth-5">
+  <div class="card-panel hoverable grey lighten-3 z-depth-5">
 
         <form method="POST" enctype="multipart/form-data">
           {{sportclubform.Hfield}}
           {{userform.Hfield}}
-          <div class="input-field col s12">
+          <div class="input-field col s12 m6 l6">
           {{sportclubform.sportclub_name}}
-          <label class="fMarkazi" for="sportclub_name">نام مجموعه ورزشی</label>
+          <label class="fLalezar" for="sportclub_name">نام مجموعه ورزشی</label>
           </div>
-          <div class="input-field col s12">
+          <div class="input-field col s12 m6 l6">
   {{userform.first_name}}
-  <label class="fMarkazi" for="username">نام</label>
+  <label class="fLalezar" for="first_name">نام</label>
 </div>
-<div class="input-field col s12 red-text">
+<div class="input-field col s12 m6 l6 red-text">
 {{userform.last_name}}
-<label class="fMarkazi right-align" for="password">نام خانوادگی</label>
+<label class="fLalezar right-align" for="last_name">نام خانوادگی</label>
 </div>
-<div class="input-field col s12 red-text">
+<div class="input-field col s12 m6 l6 red-text">
 {{userform.email}}
-<label class="fMarkazi right-align" for="password">ایمیل</label>
+<label class="fLalezar right-align" for="email">ایمیل</label>
 </div>
-<div class="input-field col s12">
+<div class="input-field col s12 m6 l6">
 {{sportclubform.phone_number}}
-<label class="fMarkazi" for="phone_number">تلفن همراه</label>
+<label class="fLalezar" for="phone_number">تلفن همراه</label>
 </div>
-<div class="input-field col s12">
+<div class="input-field col s12 m6 l6">
 {{sportclubform.company_phone_number}}
-<label class="fMarkazi" for="company_phone_number">تلفن ثابت</label>
+<label class="fLalezar" for="company_phone_number">تلفن ثابت</label>
 </div>
 
-<div class="input-field col s12">
-  <select name="region">
+<div class="input-field col s12 m6 l6">
+    <label class="fLalezar">استان</label><br><br>
+
+  <select class="browser-default" name="region">
 
     <option value="آذربایجان شرقی" class="">آذربایجان شرقی</option>
     <option value="آذربایجان غربی" class="">آذربایجان غربی</option>
@@ -80,24 +81,24 @@
 
   </select>
 
-  <label>استان</label>
+
 </div>
 
-<div class="input-field col s12 red-text">
+<div class="input-field col s12 m6 l6 red-text">
 {{sportclubform.address}}
-<label class="fMarkazi right-align" for="textarea1">آدرس</label>
+<label class="fLalezar right-align" for="textarea1">آدرس</label>
 </div>
-<div class="input-field col s12 red-text">
+<div class="input-field col s12 m6 l6 red-text">
 {{sportclubform.info}}
-<label class="fMarkazi right-align" for="password">اطلاعات دیگر</label>
+<label class="fLalezar right-align" for="info">اطلاعات دیگر</label>
 </div>
 <div class="row">
 
 
-<div class="input-field col s12 m12 l12">
+<div class="input-field col s12 m6 l6">
   <div class="file-field input-field">
 
-<div class="btn gold">
+<div class="btn gold fLalezar">
 {{sportclubform.picture}}
 <span>عکس</span>
 
@@ -111,12 +112,12 @@
 <br>
 
             {% if sportclubform.errors or userform.errors %}
-            <p class="fMarkazi white-text">مشکلی پیش آمد لطفا روباره سعی کنید</p>
+            <p class="fHarmattan white-text">مشکلی پیش آمد لطفا دوباره سعی کنید</p>
             {% endif %}
 
                 {% csrf_token %}
 
-                <button class="hoverable btn waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
+                <button class="hoverable btn-large waves-effect waves-dark gold white-text z-depth-3 fLalezar" type="submit">تایید
     </button>
     <br><br>
 
@@ -125,7 +126,6 @@
 </div>
 </div>
 
-</div>
 </div>
 </div>
 </div>

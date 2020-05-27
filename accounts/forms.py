@@ -56,10 +56,11 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta():
         model = UserModel
-        fields = ('first_name','email',)
+        fields = ('first_name','email','last_name')
         widgets = {
             'email': forms.TextInput(attrs={'id':'email'}),
             'first_name': forms.TextInput(attrs={'id':'first_name'}),
+            'last_name': forms.TextInput(attrs={'id':'last_name'}),
         }
 
 

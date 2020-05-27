@@ -1,4 +1,4 @@
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 
 {% block head_block %}
 <meta name=”robots” content=”noindex,follow”>
@@ -9,38 +9,37 @@
 
 {% block body_block %}
 <div class="section">
-  <div class="container">
   <div class="container"><br>
-<span class="center-align"><h3 class="fMarkazi gold-text";>اطلاعات حساب</h3><br><br></span>
+<span class="center-align"><h3 class="fLalezar gold-text";>اطلاعات حساب</h3><br><br></span>
   <div class="row center">
-  <div class="card-panel hoverable pink accent-3 z-depth-5">
+  <div class="card-panel hoverable grey lighten-3 z-depth-5">
 
         <form method="POST">
           {{bankinfoform.Hfield}}
-          <div class="input-field col s12">
+          <div class="input-field col s12 m12 l6">
   {{bankinfoform.bankaccount_bankname}}
-  <label class="fMarkazi" for="username">نام بانک</label>
+  <label class="fLalezar" for="bankaccount_bankname">نام بانک</label>
 </div>
-<div class="input-field col s12 red-text">
+<div class="input-field col s12 m12 l6 red-text">
 {{bankinfoform.bankaccount_ownername}}
-<label class="fMarkazi right-align" for="password">نام دارنده حساب</label>
+<label class="fLalezar right-align" for="bankaccount_ownername">نام دارنده حساب</label>
 </div>
-<div class="input-field col s12 red-text">
+<div class="input-field col s12 m12 l6 red-text">
 {{bankinfoform.bankaccount_accountnumber}}
-<label class="fMarkazi right-align" for="password">شماره حساب</label>
+<label class="fLalezar right-align" for="bankaccount_accountnumber">شماره حساب</label>
 </div>
-<div class="input-field col s12 red-text">
+<div class="input-field col s12 m12 l6 red-text">
 {{bankinfoform.bankaccount_cardnumber}}
-<label class="fMarkazi right-align" for="password">شماره کارت</label>
+<label class="fLalezar right-align" for="bankaccount_cardnumber">شماره کارت</label>
 </div>
 
             {% if bankinfoform.errors %}
-            <p class="fMarkazi white-text">مشکلی پیش آمد لطفا روباره سعی کنید</p>
+            <p class="fHarmattan white-text">مشکلی پیش آمد لطفا روباره سعی کنید</p>
             {% endif %}
 
                 {% csrf_token %}
 
-                <button class="hoverable btn waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
+                <button class="hoverable btn-large fLalezar waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
     </button>
     <br><br>
 
@@ -49,7 +48,6 @@
 </div>
 </div>
 
-</div>
 </div>
 </div>
 </div>

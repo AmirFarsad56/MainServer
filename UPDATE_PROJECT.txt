@@ -4,7 +4,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ FOR UPDATING DJANGO SIDE
 git init && git add . && git commit -m "May 15" && git push -u origin master
 
 sudo mv Main_Project/media media
-sudo rm -r Main_Project/ && git clone https://github.com/AmirFarsad56/server.git Main_Project
+sudo rm -r Main_Project/ && git clone https://github.com/AmirFarsad56/MainServer.git Main_Project
 #######CHANGE config_file PATH IN SETTINGS.PY TO############
 nano Main_Project/Main_Project/settings.py
 ########/home/amirfarsad/django_env/config.json#### DEBUG = False ######

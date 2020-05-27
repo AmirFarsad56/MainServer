@@ -2,11 +2,12 @@
 {% load customtags_sportclub %}
 {% load customtags_session %}
 {% load leaflet_tags %}
-{% leaflet_css %}
-{% leaflet_js %}
+
 <!DOCTYPE html>
 <html>
   <head>
+    {% leaflet_css %}
+    {% leaflet_js %}
     <title>
         رزرو سالن ورزشی | سامانه ورزش کن
     </title>
@@ -47,10 +48,10 @@
         overflow-x:hidden;
       }
 </style>
-    <script type="text/javascript" src="{% static 'js/leaflet.ajax.min.js' %}"></script>
   </head>
   <body class="fHarmattan grey lighten-4">
 <!-- initialzing sportclub points on map -->
+<script type="text/javascript" src="{% static 'js/leaflet.ajax.min.js' %}"></script>
 <script type="text/javascript">
   function points(map,options){
     var datasets = new L.GeoJSON.AJAX("{% url 'sportclub:mapdataset' %}",{
@@ -142,7 +143,7 @@
   </nav>
 <!-- end nav-->
 
-<div style="background-color:#8c8c8c">
+<div style="background-color:#d1d1d1">
   <br><br><br>
 
   <h4 class="row center black-text fHarmattan">
@@ -156,7 +157,7 @@
   <form method="POST" style="direction:rtl; text-align:right;">
 {% csrf_token %}
 
-<div style="background-color:#545454">
+<div style="background-color:#ededed">
   <br>
   <h4 class="row center fLalezar gold-text">
         جستجو در سانس های ورزشی
@@ -187,7 +188,7 @@
        id="exampleInput3" data-mddatetimepicker="true" data-englishnumber="true" autocomplete="off" type="text" name="day" >
     </div>
     <div class="col s12 m3 l4">
-      <select style="border:none; border-bottom: 1px solid #9e9e9e; background-color:#545454; color:#b8972c" class="col s12 m11 l11 fLalezar browser-default" name="time">
+      <select style="border:none; border-bottom: 1px solid #9e9e9e; background-color:#ededed; color:#b8972c" class="col s12 m11 l11 fLalezar browser-default" name="time">
         <option style="white-space:pre;" value="" disabled selected>        ساعت شروع</option>
         <option style="white-space:pre;" value="1" >      قبل از 10 صبح</option>
         <option style="white-space:pre;" value="2">      بین 10 صبح و 15 ظهر</option>
@@ -204,12 +205,12 @@
 </div>
 
 
-<div style="background-color:#545454" class="row center-align">
+<div style="background-color:#ededed" class="row center-align">
   <button class="input-field center-align left-align left-align btn btn-large fLalezar gold black-text " type="submit">جستجو
   </button>
 </div>
 </div>
-<div style="margin:-20px; background-color:#8c8c8c; color:#b8972c" class="row center black-text fLalezar"">
+<div style="margin:-20px; background-color:#d1d1d1; color:#b8972c" class="row center black-text fLalezar"">
 <br>
 <h4 >
 
@@ -217,11 +218,11 @@
 </h4>
 
 </div>
-<div style="background-color:#8c8c8c" class="row center">
+<div style="background-color:#d1d1d1" class="row center">
 
 
   {% if error %}
-  <div class="col s12 m12 l12 center white-text text-darken-2">
+  <div class="col s12 m12 l12 center black-text">
     <h5 style="direction:rtl;">
   مجموعه ورزشی با سریال وارد شده پیدا نشد.
   </h5>
@@ -724,5 +725,6 @@
         <script>
       AOS.init();
     </script>
+
       </body>
     </html>

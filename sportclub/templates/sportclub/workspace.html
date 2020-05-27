@@ -1,4 +1,4 @@
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 
 {% block head_block %}
 <meta name=”robots” content=”noindex,follow”>
@@ -13,12 +13,12 @@
 <div class="section">
 
   <div class="container"><br>
-<span class="center-align"><h3 class="fMarkazi gold-text";>لیست سالن های ورزشی</h3><br><br></span>
+<span class="center-align"><h3 class="fLalezar teal-text";>لیست سالن های ورزشی</h3><br><br></span>
 
   <div class="row center">
 
     {% for salon in sportclub_detail.salons.all %}
-  <div class="card-panel hoverable pink accent-3 z-depth-5 fMarkazi">
+  <div class="card-panel hoverable grey lighten-3 z-depth-5 fHarmattan">
 {% if salon.pictures.all %}
     <div class="slider">
         <ul class="slides">
@@ -32,21 +32,21 @@
 {% else %}
 لطفا هرچه زودتر نسبت به آپلود عکس های سالن از طریق لینک ویرایش اقدام فرمائید در غیر اینصورت سالن شما بازدید کمی خواهد داشت
 {% endif %}
-    <h3 class=" fMarkazi gold-text">اطلاعات سالن ورزشی</h3>
+    <h3 class=" fLalezar gold-text">اطلاعات سالن ورزشی</h3><br>
 <h6>
   <div class="row">
     <div class="col s6 m6 l6 right-align">
     {% if salon.is_confirmed %}
-    تایید شده <i class="material-icons green-text">check</i>
+    تایید شده <i style="margin-top:-10px;" class="material-icons green-text">check</i>
     {% else %}
-    در انتظار تایید شدن <i class="material-icons white-text">close</i>
+    در انتظار تایید شدن <i style="margin-top:-10px;"  class="material-icons red-text">close</i>
     {% endif %}
   </div>
     <div class="col s6 m6 l6 left-align">وضعیت سالن</div>
   </div>
     <div class="row">
       <div class="col s6 m6 l6 right-align">{{salon.area}}</div>
-      <div class="col s6 m6 l6 left-align">(انداره سالن (متر مربع</div>
+      <div class="col s6 m6 l6 left-align">انداره سالن (متر مربع)</div>
     </div>
     <div class="row">
       <div class="col s6 m6 l6 right-align">{{salon.floor_type}}</div>
@@ -112,21 +112,21 @@
     <div class="row">
       <div class="col s6 m6 l6 right-align">{{salon.more_than_24_sessions_discount}}</div>
       <div class="col s6 m6 l6 left-align">درصد تخفیف برای کاربرانی که قراردادی بالای ۲۴ جلسه تنظیم میکنند</div>
-    </div>
+    </div><br>
     <div class="row">
     <div class="col s12 m6 l6">
-<a href="{% url 'salon:update' slug=user.slug pk=salon.pk %}" style="white-space:pre; margin-bottom: 18px;"  class="hoverable waves-effect waves-light btn gold white-text"><h6><span>             </span> ویرایش  <span>             </span></h6></a><br>
+<a href="{% url 'salon:update' slug=user.slug pk=salon.pk %}" style="white-space:pre; margin-bottom: 18px;"  class="hoverable waves-effect waves-light btn-large gold white-text fLalezar"><span>             </span>ویرایش سالن<span>             </span></a><br>
     </div>
 
     <div class="col s12 m6 l6">
-    <a href="{% url 'session:workspace' pk=salon.pk %}" style="white-space:pre;  margin-bottom: 18px;"  class="hoverable waves-effect waves-light btn gold white-text"><h6><span>     </span>مدیریت سانس ها <span>     </span></h6></a><br> <br>
+    <a href="{% url 'session:workspace' pk=salon.pk %}" style="white-space:pre;  margin-bottom: 18px;"  class="hoverable waves-effect waves-light btn-large gold white-text fLalezar"><span>     </span>مدیریت سانس ها <span>     </span></a><br> <br>
     </div>
     <div class="row">
 
     </div>
     {% if salon.reckonings.all %}
     <div class="col s12 m12 l12">
-    <a  href="{% url 'salon:reckoninglist' pk=salon.pk %}" style="white-space:pre" class="waves-effect waves-light btn modal-trigger modal-close green white-text"><h6>                      <span>لیست تسویه حساب ها</span>                     </h6></a><br>
+    <a  href="{% url 'salon:reckoninglist' pk=salon.pk %}" style="white-space:pre" class="waves-effect waves-light btn-large modal-trigger modal-close green white-text fLalezar">                      <span>لیست تسویه حساب ها</span>                     </a><br>
     </div>
 {% endif %}
     </div>
@@ -143,13 +143,13 @@
   </div>
 </div>
 <div class="row">
-  <div class="col s12 m12 l12 center-align gold-text">
+  <div class="col s12 m12 l12 center-align black-text"><h6>
     {% if sportclub_detail.salons.all %}
     اگر در مجموعه ورزشی شما بیش از یک سالن وجود دارد با کلیک بر روی لینک بالا آن را اضافه کنید
     {% else %}
     اضافه کردن سالن به سیستم
     {% endif %}
-  </div>
+</h6>  </div>
 </div>
 
 

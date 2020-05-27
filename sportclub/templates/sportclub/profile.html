@@ -1,4 +1,4 @@
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 
 {% block head_block %}
 <meta name=”robots” content=”noindex,follow”>
@@ -9,64 +9,59 @@
 
 {% block body_block %}
 
-{% if sportclub_detail.picture %}
-<div class="parallax-container">
-      <div class="parallax"><img src="{{sportclub_detail.picture.url}}"></div>
-    </div>
-{% endif %}
+
 <div class="section">
 
-  <div class="container"><br>
-<span class="center-align"><h3 class="fMarkazi gold-text";>{{user.first_name}} {{user.last_name}} خوش آمدید</h3><br><br></span>
+  <div class="fLalezar container"><br>
 
 
   <div class="row center">
-  <div class="card-panel hoverable pink accent-3 z-depth-5 fMarkazi">
-    <h3 class=" fMarkazi gold-text">اطلاعات شخصی</h3>
+  <div class="card-panel hoverable grey lighten-3 z-depth-5 fLalezar">
+    <h3 class=" fLalezar gold-text">اطلاعات مجموعه</h3>
 <h6>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{user.username}}</div>
-      <div class="col s6 m6 l6 left-align">نام کاربری</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{user.username}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">نام کاربری</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.sportclub_name}}</div>
-      <div class="col s6 m6 l6 left-align">نام مجموعه ورزشی</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.sportclub_name}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">نام مجموعه ورزشی</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.serial_number}}</div>
-      <div class="col s6 m6 l6 left-align">شماره سریال مجموعه ورزشی</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.serial_number}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">شماره سریال مجموعه ورزشی</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{user.first_name}}</div>
-      <div class="col s6 m6 l6 left-align">نام</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{user.first_name}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">نام</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{user.last_name}}</div>
-      <div class="col s6 m6 l6 left-align">نام خانوادگی</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{user.last_name}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">نام خانوادگی</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{user.email}}</div>
-      <div class="col s6 m6 l6 left-align">ایمیل</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{user.email}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">ایمیل</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.company_phone_number}}</div>
-      <div class="col s6 m6 l6 left-align">شماره تلفن ثابت</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.company_phone_number}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">شماره تلفن ثابت</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.phone_number}}</div>
-      <div class="col s6 m6 l6 left-align">شماره همراه</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.phone_number}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">شماره همراه</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.region}}</div>
-      <div class="col s6 m6 l6 left-align">استان</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.region}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">استان</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.address}}</div>
-      <div class="col s6 m6 l6 left-align">آدرس</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.address}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">آدرس</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.info}}</div>
-      <div class="col s6 m6 l6 left-align">اطلاعات دیگر</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.info}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">اطلاعات دیگر</div>
     </div>
     </h6>
     <div class="row">
@@ -76,29 +71,29 @@
   </div>
 
 <br><br>
-  <div class="card-panel hoverable pink accent-3 z-depth-5 fMarkazi">
-    <h3 class=" fMarkazi gold-text">اطلاعات حساب</h3>
+  <div class="card-panel hoverable grey lighten-3 z-depth-5 fLalezar">
+    <h3 class=" fLalezar gold-text">اطلاعات حساب</h3>
     {% if  sportclub_detail.bankaccount_cardnumber and sportclub_detail.bankaccount_bankname and sportclub_detail.bankaccount_ownername and sportclub_detail.bankaccount_accountnumber %}
 <h6>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.bankaccount_ownername}}</div>
-      <div class="col s6 m6 l6 left-align">نام دارنده حساب</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.bankaccount_ownername}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">نام دارنده حساب</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.bankaccount_bankname}}</div>
-      <div class="col s6 m6 l6 left-align">بانک</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.bankaccount_bankname}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">بانک</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.bankaccount_cardnumber}}</div>
-      <div class="col s6 m6 l6 left-align">شماره کارت</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.bankaccount_cardnumber}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">شماره کارت</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align">{{sportclub_detail.bankaccount_accountnumber}}</div>
-      <div class="col s6 m6 l6 left-align">شماره حساب</div>
+      <div class="col s6 m6 l6 fHarmattan right-align">{{sportclub_detail.bankaccount_accountnumber}}</div>
+      <div class="col s6 m6 l6 teal-text left-align">شماره حساب</div>
     </div>
     </h6>
     {% else %}
-    <h5>شما هنوز اطلاعات حساب بانکی خود را وارد نکردید لطفا هر چه سریعتر اطلاعات حساب خود را به طور کامل وارد کنید تا قادر به انجام فعالیت های خود در سایت ورزش کن باشید</h5><br>
+    <h5 class="fHarmattan">شما هنوز اطلاعات حساب بانکی خود را وارد نکردید لطفا هر چه سریعتر اطلاعات حساب خود را به طور کامل وارد کنید تا قادر به انجام فعالیت های خود در سایت ورزش کن باشید</h5><br>
     {% endif %}
     <div class="row">
     <div class="col s12 m12 l12 center-align"><a style="white-space:pre" href="{% url 'sportclub:bankinfochange' slug=user.slug %}" class="waves-effect waves-light btn modal-trigger modal-close gold white-text"><h6>               <span>ویرایش</span>               </h6></a><p></p></div>
@@ -107,15 +102,15 @@
 
 
 <br><br>
-  <div class="card-panel hoverable pink accent-3 z-depth-5 fMarkazi">
-    <h3 class=" fMarkazi gold-text">قوانین مجموعه ورزشی</h3>
+  <div class="card-panel hoverable grey lighten-3 z-depth-5 fLalezar">
+    <h3 class=" fLalezar gold-text">قوانین مجموعه ورزشی</h3>
 <h6>
     <div class="row">
       {% if sportclub_detail.terms_and_conditions %}
-      <div class="col s12 m12 l12 right-align">{{sportclub_detail.terms_and_conditions|linebreaks}}</div>
+      <div class="col s12 m12 l12 right-align fHarmattan">{{sportclub_detail.terms_and_conditions|linebreaks}}</div>
       {% else %}
-      <div class="col s12 m12 l12 center-align">شما فعلا هیچ قانون خاصی برای مجموعه ورزش خود ایجاد نکردید در صورت نیاز از طریف لینک زیر اقدام فرمایید برای مثال</div><br>
-      <div class="col s12 m12 l12 center-align">
+      <div class="col s12 m12 l12 center-align fHarmattan">شما فعلا هیچ قانون خاصی برای مجموعه ورزش خود ایجاد نکردید در صورت نیاز از طریف لینک زیر اقدام فرمایید برای مثال</div><br>
+      <div class="col s12 m12 l12 right-align fHarmattan">
         <p>الف - این مجموعه ورزشی هیچ مسئولیتی در قبال اشیاء گم شده شما ندارد</p>
         <p> ب - لطفا قبل از تایم مقرر جهت رسیدگی به امور صحت رزرو در ورزشگاه حضور داشته باشید</p>
 

@@ -39,6 +39,12 @@ class BankInfoForm(forms.ModelForm):
         fields = ('bankaccount_ownername','bankaccount_accountnumber',
                   'bankaccount_cardnumber',
                   'bankaccount_bankname')
+        widgets = {
+            'bankaccount_ownername': forms.TextInput(attrs={'id':'bankaccount_ownername'},),
+            'bankaccount_accountnumber': forms.TextInput(attrs={'id':'bankaccount_accountnumber'},),
+            'bankaccount_cardnumber': forms.TextInput(attrs={'id':'bankaccount_cardnumber'},),
+            'bankaccount_bankname': forms.TextInput(attrs={'id':'bankaccount_bankname'},),
+        }
 
 
 class SportClubUpdateForm(forms.ModelForm):
@@ -52,8 +58,11 @@ class SportClubUpdateForm(forms.ModelForm):
         fields = ('phone_number','address','info','picture','company_phone_number','sportclub_name')
         widgets = {
             'address': forms.Textarea(attrs={'id':'textarea1','class': 'materialize-textarea','style': "height: 100px"}),
-            'info': forms.Textarea(attrs={'class': 'materialize-textarea','style': "height: 100px"}),
+            'info': forms.Textarea(attrs={'id':'info','class': 'materialize-textarea','style': "height: 100px"}),
             'picture': forms.FileInput(attrs={},),
+            'phone_number': forms.TextInput(attrs={'id':'phone_number'},),
+            'company_phone_number': forms.TextInput(attrs={'id':'company_phone_number'},),
+            'sportclub_name': forms.TextInput(attrs={'id':'sportclub_name'},),
         }
 
 
