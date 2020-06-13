@@ -265,7 +265,7 @@
             <a href="{% url 'session:publiclistforsalon' pk=booking.session.salon.pk %}" style="height:40px; margin-top:16px" class="waves-effect waves-light btn-large" ><h6>سانس های دیگر این سالن</h6></a>
           </div>
         </div>
-        <div id="sportclub{{booking.pk}}" style="height: 195px;">
+        <div id="sportclub{{booking.pk}}" >
           <div class="row">
             <div class="col s8 m8 l8 right-align black-text fHarmattan">{{booking.session.salon.sportclub.sportclub_name}}</div>
             <div class="col s4 m4 l4 left-align fLalezar">نام مجموعه ورزشی</div>
@@ -293,6 +293,7 @@
     {% endif %}
     {% endfor %}
 
+  </div>
   </div>
   <div id="upcoming-sessions" class="col s12">
     <span class="center-align"><h3 class="fLalezar teal-text";>لیست سانس های رزرو شده پیش رو</h3><br><br></span>
@@ -696,7 +697,7 @@
             <a href="{% url 'session:publiclistforsalon' pk=booking.session.salon.pk %}" style="height:40px; margin-top:16px" class="waves-effect waves-light btn-large" ><h6>سانس های دیگر این سالن</h6></a>
           </div>
         </div>
-        <div id="sportclub{{booking.pk}}" style="height: 195px;">
+        <div id="sportclub{{booking.pk}}" >
           <div class="row">
             <div class="col s8 m8 l8 right-align black-text fHarmattan">{{booking.session.salon.sportclub.sportclub_name}}</div>
             <div class="col s4 m4 l4 left-align fLalezar">نام مجموعه ورزشی</div>

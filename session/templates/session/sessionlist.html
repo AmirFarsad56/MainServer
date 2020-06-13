@@ -1,10 +1,28 @@
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 {% load customtags_session %}
 {% block head_block %}
 <meta name=”robots” content=”noindex,follow”>
 <title>
-    پروفایل | سامانه ورزش کن
+    سانس ها | سامانه ورزش کن
 </title>
+<style media="screen">
+  table {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+      }
+      td {
+            -moz-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            filter: FlipH;
+            -ms-filter: "FlipH";
+          }
+</style>
 {% endblock %}
 
 {% block body_block %}
@@ -17,7 +35,7 @@
 
 <div class="container">
   <div class="row center-align">
-    <span class="center-align gold-text fMarkazi">درصورت وجود سانس با کلیک بر روی هر یک از روزها میتوانید به سانس های آن روز دسترسی داشته باشید</span>
+    <span class="center-align teal-text fHarmattan">درصورت وجود سانس با کلیک بر روی هر یک از روزها میتوانید به سانس های آن روز دسترسی داشته باشید</span>
     </div>
     <div class="row center">
 
@@ -29,7 +47,7 @@
   {% endif %}
   {% for key, month in data %}
 
- <table class="grey darken-4 white-text fMarkazi">
+ <table class="grey darken-4 white-text fLalezar">
       <th class="center" style="white-space:pre">
         <td style="white-space:pre">{% for day in month %}{% if day|only_day|cutbr == '1' %}<h5 class="pink-text">{{day|only_year}}</h5>{% endif %}{% endfor %}</td>
         <td style="white-space:pre">          </td><td style="white-space:pre">          </td><td style="white-space:pre">          </td>
@@ -66,5 +84,7 @@
 
     </table>
 <br><br>
+
     {% endfor %}
+    </div></div>
   {% endblock %}

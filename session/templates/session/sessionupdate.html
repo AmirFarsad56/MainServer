@@ -1,4 +1,4 @@
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 {% load static %}
 
 {% block head_block %}
@@ -10,35 +10,33 @@
 
 {% block body_block %}
 <div class="section">
-  <div class="container">
   <div class="container"><br>
-<span class="center-align"><h3 class="fMarkazi gold-text";>ویرایش سانس</h3><br><br></span>
+<span class="center-align"><h3 class="fLalezar teal-text";>ویرایش سانس</h3><br><br></span>
   <div class="row center">
-  <div class="card-panel hoverable pink accent-3 z-depth-5 fMarkazi">
+  <div class="card-panel hoverable grey lighten-3 z-depth-5 fLalezar">
 
     <form id='days_form' method="POST">
       {{form.Hfield}}
       {% csrf_token %}
 
-      <div class="input-field col s12">
+      <div class="input-field col s12 m6 l6">
         {{form.price}}
-        <label class="fMarkazi" for="username">قیمت بر حسب تومان</label>
+        <label class="fLalezar" for="id_price">قیمت بر حسب تومان</label>
       </div>
-      <div class="input-field col s12">
+      <div class="input-field col s12 m6 l5">
         {{form.discount_percentage}}
-        <label class="fMarkazi" for="username">تخفیف بر حسب درصد</label>
+        <label class="fLalezar" for="id_discount_percentage">تخفیف بر حسب درصد</label>
       </div>
-      <div class="input-field col s12 m12 l12">
+      <div class="input-field col s12 m6 offset-m5 offset-l5">
         <label>
           {{form.is_ready}}
           <span>آماده رزرو بودن</span>
         </label>
       </div><br><br><br>
       <div class="row"></div><div class="row"></div><div class="row"></div>
-      <button class="hoverable btn waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
+      <button class="fLalezar hoverable btn waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
 </button>
     </form>
-  </div>
   </div>
   </div>
   </div>

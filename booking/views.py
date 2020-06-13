@@ -521,7 +521,7 @@ def BookedSessionListView(request,pk):
 @login_required
 @sportclub_required
 def CancellingBySportclubView(request,pk):
-    try:
+    if True:
         today = jdatetime.datetime.now().date()
         now_time = datetime.datetime.now().time()
 
@@ -543,7 +543,7 @@ def CancellingBySportclubView(request,pk):
             booking_object.save()
             session.save()
             api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
-            phone_number = booking_object.booker.phone_number
+            phone_number = '0' + booking_object.booker.user.phone_number
             message_text ='''
 سامانه ورزش کن\nبه اطلاع شما میرساند سانس
 روز {first}
@@ -559,5 +559,5 @@ def CancellingBySportclubView(request,pk):
 
 
         return HttpResponseRedirect(reverse('booking:cancelsuccessbysportclub'))
-    except:
-        return HttpResponseRedirect(reverse('booking:cancellingerror'))
+    #except:
+    #    return HttpResponseRedirect(reverse('booking:cancellingerror'))

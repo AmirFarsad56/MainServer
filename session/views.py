@@ -195,16 +195,19 @@ def SessionListView(request,pk):
 
                 for i in range(month_length):
                     array[first_day_of_month_weekday+i] = this_date + str(i + 1)
-
-                for i in range(len(array) - array.index(0)):
-                    array[array.index(0)] = next_date+ '' #str(i+1)
+                try:
+                    for i in range(len(array) - array.index(0)):
+                        array[array.index(0)] = next_date+ '' #str(i+1)
+                except:
+                    pass
                 for i in range(len(array)):
                     days[i] = array[(int(i/7)+1)*7-1-(i-int(i/7)*7)]
                 for i in range(len(days)):
                     if int((i)/7) == ((i)/7):
                         days[i] = days[i]+'-br'
-                dictionary['days_{first}'.format(first = str(counter))] = days
+                dictionary['days_{first}'.format(first = chr(counter+97))] = days
                 counter += 1
+
                 if now.year == last_day.year and now.month == last_day.month:
                     break
         session_days=['',]
@@ -213,7 +216,12 @@ def SessionListView(request,pk):
             str_1 = str(session.day)
             str_1 = str_1.replace('-0','-',2)
             session_days.append(str_1)
-        return render(request,'session/sessionlist.html',{'data': sorted(dictionary.items()),'session_days':session_days,'salon':salon_instance})
+        list_for_values = []
+        for key_item in sorted(dictionary.keys()):
+            list_for_values.append(tuple((key_item, dictionary[key_item])))
+
+
+        return render(request,'session/sessionlist.html',{'data': list_for_values,'session_days':session_days,'salon':salon_instance})
     else:
         return HttpResponseRedirect(reverse('login'))
 
@@ -1035,6 +1043,10 @@ def SessionPublicListView(request):
             session_list = session_list.filter(time__lte="19:00:00").filter(time__gte="15:00:00")
         if time_filter == "4":
             session_list = session_list.filter(time__gte="19:00:00")
+        if type_filter == "salon":
+            session_list = session_list.filter(salon__is_football = False)
+        if type_filter == "grass":
+            session_list = session_list.filter(salon__is_football = True)
 
         try:
             session_list = session_list.filter(day=day_filter)
@@ -1143,6 +1155,7 @@ def VirtualCancelView(request,pk):
     if session.salon.sportclub.user == request.user:
         session.virtual_booker_name = ''
         session.virtual_booker_name = None
+        session.is_ready = True
         session.save()
         return HttpResponseRedirect(reverse('session:workspace',kwargs={'pk':session.salon.pk}))
     else:

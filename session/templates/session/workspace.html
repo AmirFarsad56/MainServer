@@ -1,5 +1,4 @@
-
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 {% load customtags_session %}
 {% block head_block %}
 <link href="https://fonts.googleapis.com/css?family=Harmattan&display=swap" rel="stylesheet">
@@ -25,10 +24,10 @@
   <div class="container">
     <div class="container">
       <div class="center">
-<a style="white-space:pre"  href="#modal-help" class="waves-effect waves-light btn modal-trigger modal-close green fLalezar white-text"><h6><span>حتما قبل از شروع کار با میزکار مطالعه کنید</span></h6></a><p></p>
+<a style="white-space:pre"  href="#modal-help" class="waves-effect waves-light btn modal-trigger modal-close green fLalezar white-text"><h6><span>حتما قبل از شروع کار با میزکار، مطالعه کنید</span></h6></a><p></p>
       </div>
 
-      <div class="center card-panel hoverable gold z-depth-5 fMarkazi">
+      <div class="center card-panel hoverable gold z-depth-3 fLalezar">
       <a href="{% url 'session:create' pk=salon.pk %}" style="white-space:pre" class=" waves-effect waves-dark btn-flat btn-large gold white-text"><h5>ایجاد سانس در روز جدید</h5></a><br>
 {% if salon.lastdatas.all %}    <a href="{% url 'session:create_2' pk=salon.pk %}" style="white-space:pre; padding-left:-200px" class="waves-effect waves-dark btn-flat btn-large gold white-text"><h5 style="white-space:pre; margin-left:-20px; margin-right:-20px">افزودن سانس به روز دارای سانس</h5></a><br>
 {% endif %}
@@ -44,24 +43,30 @@
   </div>
 
   <br><br>
- {% for category in salon.sessioncategories.all %}
-  <div class="center card-panel hoverable pink accent-3 z-depth-5 fMarkazi">
+ {% for category in salon.sessioncategories.all reversed %}
+ {% if not now > category.range_end_day %}
+ <div class="center card-panel hoverable grey lighten-3 z-depth-5 fLalezar teal-text">
+ {% else %}
+ <div class="center card-panel hoverable grey z-depth-5 fLalezar teal-text">
+   <h5 class="red-text">منقضی شده</h5><br>
+ {% endif %}
+
     <h6>
     <div class="row">
-      <div class="col s6 m6 l6 right-align white-text">{{category.range_start_day}}</div>
+      <div class="col s6 m6 l6 right-align black-text fHarmattan">{{category.range_start_day}}</div>
       <div class="col s6 m6 l6 left-align">از روز</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align white-text">{{category.range_end_day}}</div>
+      <div class="col s6 m6 l6 right-align black-text fHarmattan">{{category.range_end_day}}</div>
       <div class="col s6 m6 l6 left-align">تا روز</div>
     </div>
     <div class="row">
-      <div style="white-space:pre"  class="col s6 m6 l6 right-align white-text">{{category.created_at_date}}   {{category.created_at_time}}</div>
+      <div style="white-space:pre; direction:ltr;"  class="col s6 m6 l6 right-align black-text fHarmattan">{{category.created_at_date}}   {{category.created_at_time}}</div>
       <div class="col s6 m6 l6 left-align">آخرین تنظیم این گروه</div>
     </div>
     {% if category.is_closed %}
     <div class="row">
-      <div class="col s6 m6 l6 right-align white-text">
+      <div class="col s6 m6 l6 right-align black-text fHarmattan">
         {% if category.saturdays %}شنبه ها {% endif %}
         {% if category.sundays %} یکشنبه ها{% endif %}
         {% if category.mondays %} دوشنبه ها{% endif %}
@@ -73,13 +78,13 @@
 
       <div class="col s6 m6 l6 left-align">روز های هفته</div>
 
-      <div class="col s6 m6 l6 right-align white-text">تعطیل</div>
+      <div class="col s6 m6 l6 right-align black-text fHarmattan">تعطیل</div>
       <div class="col s6 m6 l6 left-align">وضعیت سالن</div>
     </div>
     {% else %}
     <div class="row">
       <div class="row">
-      <div class="col s6 m6 l6 right-align white-text">
+      <div class="col s6 m6 l6 right-align black-text fHarmattan">
         {% if category.saturdays %}شنبه ها {% endif %}
         {% if category.sundays %} یکشنبه ها{% endif %}
         {% if category.mondays %} دوشنبه ها{% endif %}
@@ -91,15 +96,15 @@
       <div class="col s6 m6 l6 left-align">روز های هفته</div>
 </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align white-text">{{category.pk|floor}}</div>
+      <div style="direction:ltr;" class="col s6 m6 l6 right-align black-text fHarmattan">{{category.pk|floor}}</div>
       <div class="col s6 m6 l6 left-align">شروع اولین سانس</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align white-text">{{category.pk|ceil}}</div>
+      <div style="direction:ltr;" class="col s6 m6 l6 right-align black-text fHarmattan">{{category.pk|ceil}}</div>
       <div class="col s6 m6 l6 left-align">پایان آخرین سانس</div>
     </div>
     <div class="row">
-      <div class="col s6 m6 l6 right-align white-text">{{category.pk|duration}}</div>
+      <div style="direction:ltr;" class="col s6 m6 l6 right-align black-text fHarmattan">{{category.pk|duration}}</div>
       <div class="col s6 m6 l6 left-align">مدت زمان هر سانس</div>
     </div>
     </div>
@@ -107,12 +112,12 @@
     </h6>
     {% if not now > category.range_end_day %}
     <div class="row">
-      <div class="col s12 m6 l6 center-align"><a style="white-space:pre" href="{% url 'session:setprice' pk=category.pk %}" class="hoverable waves-effect waves-light btn gold white-text"><h6><span>        </span>قیمت گذاری سانس ها<span>        </span></h6></a><p></p>
+      <div class="col s12 m6 l6 center-align"><a style="white-space:pre" href="{% url 'session:setprice' pk=category.pk %}" class="hoverable waves-effect waves-light btn gold white-text"><h6><span>         </span>قیمت گذاری سانس ها<span>         </span></h6></a><p></p>
 </div>
-      <div class="col s12 m6 l6 center-align"><a style="white-space:pre" href="{% url 'session:delete' pk=category.pk %}" class="hoverable waves-effect waves-light btn gold white-text"><h6><span>         </span>حذف کردن سانس ها<span>        </span></h6></a><p></p>
+      <div class="col s12 m6 l6 center-align"><a style="white-space:pre" href="{% url 'session:delete' pk=category.pk %}" class="hoverable waves-effect waves-light btn gold white-text"><h6><span>           </span>حذف کردن سانس ها<span>          </span></h6></a><p></p>
 </div>
 
-      <div class="col s12 m6 l6 center-align"><a style="white-space:pre" href="{% url 'session:setdiscountpercentage' pk=category.pk %}" class="hoverable waves-effect waves-light btn gold white-text"><h6><span>      </span>تعیین تخفیف سانس ها<span>      </span></h6></a><p></p>
+      <div class="col s12 m6 l6 center-align"><a style="white-space:pre" href="{% url 'session:setdiscountpercentage' pk=category.pk %}" class="hoverable waves-effect waves-light btn gold white-text"><h6><span>        </span>تعیین تخفیف سانس ها<span>        </span></h6></a><p></p>
 </div>
 
       <div class="col s12 m6 l6 center-align"><a style="white-space:pre" href="{% url 'session:categorizedsessions' pk=category.pk %}" class="hoverable waves-effect waves-light btn gold white-text"><h6>لیست سانس های این مجموعه</h6></a><p></p>
@@ -243,7 +248,7 @@
     </h6>
   </div>
   <div class="modal-footer grey lighten-2">
-    <a class="modal-close waves-effect waves-green btn-flat fLalezar teal-text green lighten-2"><h6>بستن</h6></a>
+    <a class="modal-close waves-effect waves-green btn-flat fLalezar black-text green lighten-2"><h6>بستن</h6></a>
   </div>
 </div>
 

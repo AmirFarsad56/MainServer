@@ -1,12 +1,8 @@
-{% extends "base_templates/base1.html" %}
+{% extends "base_templates/base_public.html" %}
 {% load static %}
 
 {% block head_block %}
-{% block datepicker_script_block %}
-<script src="{% static 'js/datepicker/calendar.min.js' %}" ></script>
-<script src="{% static 'js/datepicker/jquery.Bootstrap-PersianDateTimePicker.js' %}" ></script>
 
-{% endblock %}
 <meta name=”robots” content=”noindex,follow”>
 <title>
   رزرو کردن مجازی | سامانه ورزش کن
@@ -15,31 +11,40 @@
 
 {% block body_block %}
 <div class="section">
-  <div class="container">
   <div class="container"><br>
-<span class="center-align"><h3 class="fMarkazi gold-text";>رزرو کردن مجازی سانس</h3><br><br></span>
+<span class="center-align"><h3 class="fLalezar teal-text";>رزرو کردن مجازی سانس</h3><br><br></span>
   <div class="row center">
-  <div class="card-panel hoverable pink accent-3 z-depth-5 fMarkazi">
+  <div class="card-panel hoverable grey lighten-3 z-depth-5 fLalezar">
 
     <form id='days_form' method="POST">
       {{form.Hfield}}
       {% csrf_token %}
+      <div class="col s0 m2 l3">
 
-      <div class="input-field col s12">
-        {{form.virtual_booker_name}}
-        <label class="fMarkazi" for="booker_name">نام فرد رزرو کننده</label>
       </div>
-      <div class="input-field col s12 m12 l12">
+      <div class="input-field col s12 m8 l6">
+        {{form.virtual_booker_name}}
+        <label class="fLalezar" for="id_virtual_booker_name">نام فرد رزرو کننده</label>
+      </div>
+      <div class="col s0 m2 l3">
+
+      </div>
+      <div class="col s0 m2 l3">
+
+      </div>
+      <div class="input-field col s12 m6 l6 offset-m5 offset-l5">
         <label>
           {{form.is_ready}}
           <span>آماده رزرو بودن</span>
         </label>
+      </div>
+      <div class="col s0 m2 l3">
+
       </div><br><br><br>
       <div class="row"></div><div class="row"></div><div class="row"></div>
-      <button class="hoverable btn waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
+      <button class="fLalezar hoverable btn waves-effect waves-dark gold white-text z-depth-3" type="submit">تایید
 </button>
     </form>
-  </div>
   </div>
   </div>
   </div>

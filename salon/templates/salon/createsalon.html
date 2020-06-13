@@ -17,18 +17,18 @@
         <form enctype="multipart/form-data" method="POST">
           {{salon_form.Hfield}}
           {% csrf_token %}
-          <div class="input-field col s12">
+          <div class="input-field col s12 m6 l6">
             {{salon_form.area}}
             <label class="fLalezar" for="area">انداره سالن (متر مربع)</label>
           </div>
-          <div class="input-field col s12">
+          <div class="input-field col s12 m6 l6">
             {{salon_form.floor_type}}
             <label class="fLalezar" for="floor_type">کیفیت کفپوش سالن</label>
           </div>
 <div class="row">
 <br>
 </div>
-          <h5 class="fLalezar gold-text">زمینه سالن</h5>
+          <h5 class="fLalezar gold-text">ورزش هایی که میشود در این سالن انجام داد</h5>
           <div class="row ">
           <div class="input-field col s6 m6 l6">
             <label>
@@ -66,6 +66,15 @@
           </div>
         </div>
 <br><br>
+<div id="divider" class="row center center-align">
+<div style="border-top: solid teal 1px;" class="col s5 m5 l5">
+</div>
+<div style="margin-top:-12px;" class="center col s2 m2 l2">
+<i class="material-icons small teal-text">blur_on</i>
+</div>
+<div style="border-top: solid teal 1px;" class="col s5 m5 l5">
+</div>
+</div>
         <h5 class="fLalezar gold-text">امکانات سالن</h5>
         <div class="row ">
         <div class="input-field col s6 m6 l6">
@@ -152,6 +161,15 @@
         </div>
       </div>
 <br><br>
+<div id="divider" class="row center center-align">
+<div style="border-top: solid teal 1px;" class="col s5 m5 l5">
+</div>
+<div style="margin-top:-12px;" class="center col s2 m2 l2">
+<i class="material-icons small teal-text">blur_on</i>
+</div>
+<div style="border-top: solid teal 1px;" class="col s5 m5 l5">
+</div>
+</div>
 <div class="input-field col s12">
   {{salon_form.six_to_twelve_sessions_discount}}
   <label class="fLalezar" for="six_to_twelve_sessions_discount">درصد تخفیف برای کاربرانی که قراردادی به مدت بین ۶ تا ۱۲ جلسه تنظیم میکنند</label>
@@ -163,6 +181,12 @@
 <div class="input-field col s12">
   {{salon_form.more_than_24_sessions_discount}}
   <label class="fLalezar" for="more_than_24_sessions_discount">درصد تخفیف برای کاربرانی که قراردادی بالای ۲۴ جلسه تنظیم میکنند</label>
+</div>
+<div class="row">
+
+</div>
+<div class="row">
+
 </div>
       <h5 class="fLalezar gold-text">عکس های سالن</h5>
 
