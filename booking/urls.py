@@ -7,7 +7,7 @@ from booking.views import (CreateProfitPercentageView, UpdateProfitPercentageVie
                             CancelSuccessBySportclubView, CancellingBySportclubView)
 
 
-app_name ='booking'
+app_name ='booking' 
 urlpatterns = [
     path('create-profit-percentage/', CreateProfitPercentageView.as_view(), name='createprofitpercentage'),
     path('update-profit-percentage/<int:pk>/', UpdateProfitPercentageView.as_view(), name='updateprofitpercentage'),
